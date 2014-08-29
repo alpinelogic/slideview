@@ -1,144 +1,193 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Slideview.js by istocode</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Slideview.js</h1>
-        <p>A tiny VanillaJS lib for responsive, carousel-like sliders. No crazy features!</p>
-
-        <p class="view"><a href="https://github.com/istocode/slideview">View the Project on GitHub <small>istocode/slideview</small></a></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Slideview.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="slideview.js - a tiny JS lib for responsive carousels.">
+  <link href="css/slideview.css" rel="stylesheet">
+  <link href="css/prism.css" rel="stylesheet">
+  <link href="css/demo.css" rel="stylesheet">
+</head>
+<body>
+<header>
+  <section class="intro">
+    <h1><span class="lib-name">slideview.js</span> <small>(beta - v0.7.0)</small></h1>
+    <p>A tiny <small>VanillaJS</small> lib for responsive carousels with a separate jQuery plugin. <br> No crazy features!</p>
+  </section>
+</header>
 
 
-        <ul>
-          <li><a href="https://github.com/istocode/slideview/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/istocode/slideview/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/istocode/slideview">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>
-<a name="slideviewjs" class="anchor" href="#slideviewjs"><span class="octicon octicon-link"></span></a>Slideview.js</h1>
+<div class="container">
+  <article>
+    <h1>Why create your own carousel?</h1>
+    <p>Because every content slider I have tried exeeds 1,000 lines of code. If you only need one feature instead of 99 and you want to support only modern Browsers <small>(IE10+)</small>, then <strong>Slideview</strong> may work for you.</p>
 
-<h3>
-<a name="why-another-slider" class="anchor" href="#why-another-slider"><span class="octicon octicon-link"></span></a>Why another slider?</h3>
+    <p>If cross-browser support is a concern, then try its equivalent jQuery plugin.</p>
 
-<p>Because every content slider I have tried exeeds 1,000 lines of code. If you only need one feature instead of 99 and you want to support only modern Browsers (IE10+), then Slideview may work for you. If non-modern Browsers are a concern, then try Slideview jQuery plugin.</p>
+    <br>
+    <h2>Features</h2>
+    <ul>
+      <li>Tiny/lightweight lib <small>(about 250 lines of code for the VanillaJS version &amp; about 140 lines for the jQuery plugin)</small>.</li>
+      <li>Sliding with CSS transitions.</li>
+      <li>All slides use percent units, which means that we don't run any JS code when the Browser window resizes <small>(except for Safari when choosing so)</small>. The slides  automatically get resized by the Browser.</li>
+      <li>Public API to move the slides programmatically.</li>
+      <li>Easily stylable via CSS.</li>
+      <li>2 separate libs: Plain JavaScript &amp; a jQuery plugin.</li>
+      <li>Free as in "free beer".</li>
+    </ul>
 
-<h3>
-<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h3>
+    <br>
 
-<ul>
-<li>Lightweight lib with VanillaJS.</li>
-<li>Uses CSS transitions for sliding effect.</li>
-<li>All slides use percent widths, which means that we don't run any JS code when the Browser window resizes (<em>except for Safari when choosing so</em>). The slides automatically get resized by the Browser.</li>
-<li>Public API to move the slides programmatically.</li>
-<li>Easily stylable with CSS.</li>
-<li>2 separate libs: Vanilla JavaScript &amp; a jQuery plugin.</li>
-<li>Free as in "free beer".</li>
-</ul><p><strong>Warning</strong>: Slideview doesn't try to be perfect for every Browser and doesn't try to fix pixel rounding issues in certain Browsers (<em>except for Safari Desktop &amp; only if you choose to use the Browser sniffing helper</em>).</p>
+    <p><strong>Warning:</strong> <em>Slideview</em> doesn't try to be perfect for every Browser and doesn't try to fix pixel rounding issues in certain Browsers (Except for Safari Desktop &amp; only if you choose to include the Browser sniffing helper).</p>
+    <br><hr>
+  </article>
 
-<h3>
-<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h3>
+  <br>
 
-<p>First you must include the core CSS file and the JS lib.</p>
+  <section class="slideview-section">
+    <h2>Vanilla JS example</h2>
+    <div class="slideview boxes" id="dark-boxes">
+      <div class="inner">
+        <div class="offscreen">
+          <div class="slide">
+            <h3>1</h3>
+          </div>
+          <div class="slide">
+            <h3>2</h3>
+          </div>
+          <div class="slide">
+            <h3>3</h3>
+          </div>
+          <div class="slide">
+            <h3>4</h3>
+          </div>
+          <div class="slide">
+            <h3>5</h3>
+          </div>
+          <div class="slide">
+            <h3>6</h3>
+          </div>
+          <div class="slide">
+            <h3>7</h3>
+          </div>
+          <div class="slide">
+            <h3>8</h3>
+          </div>
+          <div class="slide">
+            <h3>9</h3>
+          </div>
+          <div class="slide">
+            <h3>10</h3>
+          </div>
+          <div class="slide">
+            <h3>11</h3>
+          </div>
+          <div class="slide">
+            <h3>12</h3>
+          </div>
+        </div>
+      </div>
 
-<pre><code>&lt;link href="css/slideview.css" rel="stylesheet"&gt;
-&lt;script src="js/slideview.js"&gt;&lt;/script&gt;
-</code></pre>
-
-<p>Then create the HTML.</p>
-
-<pre><code>&lt;div class="slideview boxes" id="dark-boxes"&gt;
-  &lt;div class="inner"&gt;
-    &lt;div class="offscreen"&gt;
-      &lt;div class="slide"&gt;
-        &lt;h3&gt;1&gt;/h3&gt;
-      &lt;/div&gt;
-      &lt;div class="slide"&gt;
-        &lt;h3&gt;2&lt;/h3&gt;
-      &lt;/div&gt;
-      &lt;div class="slide"&gt;
-        &lt;h3&gt;3&lt;/h3&gt;
-      &lt;/div&gt;
-      &lt;div class="slide"&gt;
-        &lt;h3&gt;4&lt;/h3&gt;
-      &lt;/div&gt;
-      &lt;div class="slide"&gt;
-        &lt;h3&gt;5&lt;/h3&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-
-  &lt;nav class="nav"&gt;
-    &lt;a href="#prev" class="prev"&gt;prev&lt;/a&gt;
-    &lt;a href="#next" class="next"&gt;next&lt;/a&gt;
-  &lt;/nav&gt;
-&lt;/div&gt;
-</code></pre>
-
-<p>Now you can style Slideview as you please.</p>
-
-<pre><code>/* Here are the styles for the carousel above. */
-.boxes .slide { text-align: center; }
-.boxes .slide h3 {
-  margin: 0 4px;
-  padding: 2.25em 1em;
-  color: #E6E6E6;
-  background: #363A41;
-}
-.boxes .active h3 { background: #594A69; }
-.boxes .nav {
-  margin: 1em;
-  text-align: center;
-}
-.boxes .nav a {
-  display: inline-block;
-  margin: 0 .125em;
-  padding: .325em 1em;
-  font-size: 18px;
-  color: #FCFCFC;
-  background: #667292;
-  text-decoration: none;
-  opacity: .88;
-}
-.boxes .nav a:hover { opacity: 1; }
-</code></pre>
-
-<p>Create a new instance in JavaScript.</p>
-
-<pre><code>var slideview = new Slideview('#dark-boxes', {
-  slidesToShow: 5
-});
-</code></pre>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<ol>
-<li>Billy Onjea (<a href="https://github.com/vasilionjea" class="user-mention">@vasilionjea</a>)</li>
-</ol><h3>
-<a name="support-or-bugs" class="anchor" href="#support-or-bugs"><span class="octicon octicon-link"></span></a>Support or Bugs</h3>
-
-<p>Having trouble with Slideview or you found a bug? Open an issue or a pull-request &amp; I'll try to sort it out.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/istocode">istocode</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+      <nav class="nav">
+        <a href="#prev" class="prev">&lt;</a>
+        <a href="#next" class="next">&gt;</a>
+      </nav>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+
+
+    <br>
+    <br>
+    <p><b>1.</b> First you must include the core CSS file and the JS lib.</p>
+  <pre>
+  <code class="language-css">
+  &lt;link href="css/slideview.css" rel="stylesheet"&gt;
+  &lt;script src="js/slideview.js">&lt;/script&gt;
+  </code></pre>
+  <br>
+
+
+    <p><b>2.</b> Then create the HTML.</p>
+  <pre style="max-height:370px;">
+  <code class="language-css">
+    &lt;div class="slideview boxes" id="dark-boxes"&gt;
+      &lt;div class="inner"&gt;
+        &lt;div class="offscreen"&gt;
+          &lt;div class="slide"&gt;
+            &lt;h3&gt;1&gt;/h3&gt;
+          &lt;/div&gt;
+          &lt;div class="slide"&gt;
+            &lt;h3&gt;2&lt;/h3&gt;
+          &lt;/div&gt;
+          &lt;div class="slide"&gt;
+            &lt;h3&gt;3&lt;/h3&gt;
+          &lt;/div&gt;
+          &lt;div class="slide"&gt;
+            &lt;h3&gt;4&lt;/h3&gt;
+          &lt;/div&gt;
+          &lt;div class="slide"&gt;
+            &lt;h3&gt;5&lt;/h3&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;nav class="nav"&gt;
+        &lt;a href="#prev" class="prev"&gt;prev&lt;/a&gt;
+        &lt;a href="#next" class="next"&gt;next&lt;/a&gt;
+      &lt;/nav&gt;
+    &lt;/div&gt;
+  </code></pre>
+
+  <br>
+
+    <p><b>3.</b> Now you can style Slideview as you please and create a new instance in JavaScript.</p>
+  <pre>
+  <code class="language-css">
+  /* Here are the styles for the carousel above. */
+  .boxes .slide { text-align: center; }
+  .boxes .slide h3 {
+    margin: 0 4px;
+    padding: 2.25em 1em;
+    color: #E6E6E6;
+    background: #363A41;
+  }
+  .boxes .active h3 { background: #594A69; }
+  .boxes .nav {
+    margin: 1em;
+    text-align: center;
+  }
+  .boxes .nav a {
+    display: inline-block;
+    margin: 0 .125em;
+    padding: .325em 1em;
+    font-size: 18px;
+    color: #FCFCFC;
+    background: #667292;
+    text-decoration: none;
+    opacity: .88;
+  }
+  .boxes .nav a:hover { opacity: 1; }
+  </code>
+  <code class="language-javascript">
+  // JS
+  var slideview = new Slideview('#dark-boxes', {
+    slidesToShow: 5
+  });
+  </code></pre>
+  </section>
+</div>
+
+
+<br>
+<br>
+<hr>
+
+<footer>
+  <p>You can down load the source here: <a href="https://github.com/istocode/slideview">https://github.com/istocode/slideview</a></p>
+</footer>
+
+<script src="js/slideview.js?v=0.7.0"></script>
+<script> var slideview2 = new Slideview('#dark-boxes', {slidesToShow: 5}); </script>
+<script src="js/prism.js"></script>
+</body>
 </html>

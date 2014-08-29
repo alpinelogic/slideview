@@ -1,0 +1,112 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  font-size: 120%;
+  padding: 0;
+  margin: 0;
+  color: #48494B; 
+  font-family: 'Lato', sans-serif;
+  line-height: 1.5;
+  background: #FFF;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  width: 100%;
+}
+.text-center {
+  text-align: center;
+}
+hr {
+  border: none;
+  border-bottom: 1px solid #eee;
+}
+pre[class*="language-"] {
+  font-size: 15px;
+}
+:not(pre) > code[class*="language-"], pre[class*="language-"] {
+  background: #323336;
+}
+header {
+  display: block;
+  border-bottom: .425em solid rgba(255, 255, 255, 0.5);
+  background: url('http://unsplash.it/g/1440/420?image=96') center center no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -ms-background-size: cover;
+  background-size: cover;
+}
+header, .intro {
+  display: table;
+  width: 100%;
+  height: 420px;
+}
+.intro {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+
+  border-bottom: 8px solid rgba(207, 208, 211, 0.2);
+  padding: 0 1em;
+  font-size: 1.125em;
+  overflow: hidden;
+  text-align: center;
+  color: #E6E7E9;
+  background: rgba(0, 0, 0, 0.6);
+}
+.intro .lib-name {
+  font-size: 1.425em;
+}
+h1, h2, h3, h4, p {
+  margin: 0;
+  margin-bottom: .325em;
+  line-height: 1.5;
+}
+a {
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+  -ms-transition: .2s;
+  -o-transition: .2s;
+  transition: .2s;  
+}
+.container {
+  padding: 2em;
+}
+.slideview-section {
+  display: block;
+  margin-bottom: 8%;
+}
+.slideview-section .slideview p {
+  font-size: 17px;
+  padding: 10px 2px;
+}
+
+
+/**
+ * Dark Boxes Example.
+ * ===================
+ */
+.boxes .slide { text-align: center; }
+.boxes .slide h3 {
+  margin: 0 4px;
+  padding: 2.25em 1em;
+  color: #E6E6E6;
+  background: #363A41;
+}
+.boxes .active h3 { background: #594A69; }
+.boxes .nav {
+  margin: 1em;
+  text-align: center;
+}
+.boxes .nav a {
+  display: inline-block;
+  margin: 0 .125em;
+  padding: .325em 1em;
+  font-size: 18px;
+  color: #FCFCFC;
+  background: #667292;
+  text-decoration: none;
+  opacity: .88;
+}
+.boxes .nav a:hover { opacity: 1; }
