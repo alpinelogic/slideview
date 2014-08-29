@@ -5,7 +5,7 @@
   <title>Slideview.js</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="slideview.js - a tiny JS lib for responsive carousels.">
-  <link href="css/slideview.css" rel="stylesheet">
+  <link href="css/slideview.css?v=0.7.0" rel="stylesheet">
   <link href="css/prism.css" rel="stylesheet">
   <link href="css/demo.css" rel="stylesheet">
 </head>
@@ -13,17 +13,16 @@
 <header>
   <section class="intro">
     <h1><span class="lib-name">slideview.js</span> <small>(beta - v0.7.0)</small></h1>
-    <p>A tiny <small>VanillaJS</small> lib for responsive carousels with a separate jQuery plugin. <br> No crazy features!</p>
+    <p>A tiny <small>VanillaJS</small> lib for responsive carousel-like sliders with a separate jQuery plugin. <br> No crazy features!</p>
   </section>
 </header>
 
 
 <div class="container">
   <article>
-    <h1>Why create your own carousel?</h1>
+    <h1>Why another slider/carousel?</h1>
     <p>Because every content slider I have tried exeeds 1,000 lines of code. If you only need one feature instead of 99 and you want to support only modern Browsers <small>(IE10+)</small>, then <strong>Slideview</strong> may work for you.</p>
-
-    <p>If cross-browser support is a concern, then try its equivalent jQuery plugin.</p>
+    <p>If non-modern browsers are a concern, then try the Slideview jQuery plugin.</p>
 
     <br>
     <h2>Features</h2>
@@ -184,7 +183,7 @@
 </footer>
 
 <script src="js/slideview.js?v=0.7.0"></script>
-<script> var slideview2 = new Slideview('#dark-boxes', {slidesToShow: 5}); </script>
+<script> var slideview2 = new Slideview('#dark-boxes', { slidesToShow: 5 }); </script>
 <script src="js/prism.js"></script>
 </body>
 </html>
