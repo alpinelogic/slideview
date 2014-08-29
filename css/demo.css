@@ -81,6 +81,12 @@ a {
   font-size: 17px;
   padding: 10px 2px;
 }
+footer {
+  padding: 1.875em;
+  text-align: center;
+  background: #F7F7F7;
+  border-top: 1px solid #EEE;  
+}
 
 
 /**
