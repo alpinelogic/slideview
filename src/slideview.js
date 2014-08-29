@@ -241,8 +241,6 @@ var
     _tryFixRoundingError: function() {
       var parentWidth = _curCSS('width', _getStyles(this.element.parentNode));
       this.element.style.width = parseFloat(parentWidth) - parseFloat(parentWidth) % this.options.slidesToShow + 'px';
-
-      console.log(parseFloat(parentWidth) - parseFloat(parentWidth) % this.options.slidesToShow);
     },
     
     _setWidths: function() {
