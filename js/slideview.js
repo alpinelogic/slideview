@@ -195,9 +195,6 @@ var
     this._increaseFactor = this._total / this.options.slidesToShow;
     this._offscreenWidth = this._hundredPercent * this._increaseFactor;
     this._slideWidth = this._hundredPercent / this._total;
-    // this._initialSlideWidth = this._onscreenPercent / this.options.slidesToShow;
-    // this._offscreenWidth = this._total * this._initialSlideWidth;
-    // this._slideWidth = this._initialSlideWidth / (this._offscreenWidth / this._onscreenPercent);
 
     this._init();
   }
@@ -244,15 +241,13 @@ var
     _tryFixRoundingError: function() {
       var parentWidth = _curCSS('width', _getStyles(this.element.parentNode));
       this.element.style.width = parseFloat(parentWidth) - parseFloat(parentWidth) % this.options.slidesToShow + 'px';
-
-      console.log(parseFloat(parentWidth) - parseFloat(parentWidth) % this.options.slidesToShow);
     },
     
     _setWidths: function() {
       var self = this;
 
       // At least in Safari there is a rounding error, so 
-      // we try to fix it by removing the exess pixel(s).
+      // we try to fix it by removing the excess pixel(s).
       if (_isSafari()) {
         this._tryFixRoundingError();
       }
