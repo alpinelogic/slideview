@@ -1,0 +1,56 @@
+/**
+ * Slideview core theme
+ */
+.slideview-core img {
+  width: 100%;
+  height: auto;
+  border: 1px solid #CCC;
+  padding: 4px;
+}
+
+
+/**
+ * Slideview core styles.
+ */
+.slideview, .slideview * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.slideview { position: relative; }
+.slideview .inner {
+  position: relative;
+  overflow: hidden;
+}
+.slideview ul, .slideview li {
+  margin: 0;
+  padding: 0;
+}
+.offscreen {
+  display: none;
+  position: relative;
+  overflow: hidden;
+
+  -webkit-transition: -webkit-transform 0.3s;
+  -moz-transition: -moz-transform 0.3s;
+  -ms-transition: -ms-transform 0.3s;
+  -o-transition: -o-transform 0.3s;
+  transition: transform 0.3s;
+}
+.slide {
+  display: block;
+  float: left;
+
+  /* Very important if you don't want miscalculations.
+   */
+  margin: 0 !important;
+
+  height: 100%;
+  overflow: hidden;
+
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -ms-transition: .3s;
+  -o-transition: .3s;
+  transition: .3s;
+}
