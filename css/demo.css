@@ -102,7 +102,7 @@ footer {
 }
 .boxes .active h3 { background: #594A69; }
 .boxes .nav {
-  margin: 1em;
+  margin: .5em;
   text-align: center;
 }
 .boxes .nav a {
