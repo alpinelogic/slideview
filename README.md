@@ -49,7 +49,6 @@ Nexus 4:
 Safari in these iOS Simulators: 
 * iPhone Retina (4in)
 * iPhone Retina (4in + 64bit)
-* iPad/iPad Retina in horizontal orientation
 
 
 
