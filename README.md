@@ -35,13 +35,13 @@ None!
 ### Compatibility
 Modern & non-buggy Browsers. Known to work and tested in the following Browsers & platforms: 
 
-###### Desktop:
+##### Desktop:
 Latest versions of:
 * Chrome & Chrome Canary
 * Firefox
 * Safari
 
-###### Mobile:
+##### Mobile:
 Nexus 4:
 * Chrome
 * Firefox
