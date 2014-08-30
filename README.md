@@ -33,7 +33,7 @@ None!
 
 
 ### Compatibility
-Modern & non-buggy Browsers. Known to work and tested in the following & platforms: 
+Modern & non-buggy Browsers. Known to work and tested in the following Browsers & platforms: 
 
 ###### Desktop:
 Latest versions of:
