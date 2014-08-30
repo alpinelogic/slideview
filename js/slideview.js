@@ -149,9 +149,9 @@ var
     }
   },
 
-  _isSafari = function() {
+  _roundingErrorBrowser = function() {
     if (!window.ua) { return; }
-    return ua.safari;
+    return ua.safari || ua.opera;
   },
 
   // Constants
@@ -211,7 +211,7 @@ var
     // Safari gets this performance hit because of rounding erros we have to fix on the slides.
     // This function won't run when the `ua` helper isn't included with the lib.
     _onResize: function() {
-      if (!_isSafari()) { return; }
+      if (!_roundingErrorBrowser()) { return; }
       var self = this, timer;
 
       on(_window, 'resize',  function(e) {
@@ -248,7 +248,7 @@ var
 
       // At least in Safari there is a rounding error, so 
       // we try to fix it by removing the excess pixel(s).
-      if (_isSafari()) {
+      if (_roundingErrorBrowser()) {
         this._tryFixRoundingError();
       }
 
