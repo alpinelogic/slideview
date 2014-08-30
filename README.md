@@ -10,7 +10,7 @@ If non-modern browsers are a concern, then try the Slideview jQuery plugin (_com
 
 
 ### Features
-* Tiny/lightweight lib (a little over 250 lines of code for the VanillaJS version).
+* Tiny/lightweight lib (_a little over 250 lines of code for the VanillaJS version_).
 * Sliding effect happens with a simple 2D CSS transition.
 * In contrast to many other sliders, Slideview.js uses percentages for all of its elements. This means that we don't have to run any JS code when the Browser window resizes like other sliders do. You initialize Slideview once and the slides get resized by the Browser automatically after that.
 * Simple public API to move the slides programmatically.
