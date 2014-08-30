@@ -151,7 +151,7 @@ var
 
   _roundingErrorBrowser = function() {
     if (!window.ua) { return; }
-    return ua.safari || ua.opera;
+    return ua.safari;
   },
 
   // Constants
