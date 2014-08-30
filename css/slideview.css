@@ -1,15 +1,4 @@
 /**
- * Slideview core theme
- */
-.slideview-core img {
-  width: 100%;
-  height: auto;
-  border: 1px solid #CCC;
-  padding: 4px;
-}
-
-
-/**
  * Slideview core styles.
  */
 .slideview, .slideview * {
