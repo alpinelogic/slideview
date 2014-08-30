@@ -9,6 +9,7 @@ Because every content slider I have tried exeeds 1,000 lines of code. If you onl
 If non-modern browsers are a concern, then try the Slideview jQuery plugin (_coming soon_).
 
 
+
 ### Features
 * Tiny/lightweight lib (_a little over 250 lines of code for the VanillaJS version_).
 * Sliding effect happens with a simple 2D CSS transition.
@@ -23,6 +24,33 @@ If non-modern browsers are a concern, then try the Slideview jQuery plugin (_com
 
 **Before**: <http://istocode.github.io/slideview/images/safari-rounding-error.png> <br>
 **After**: <http://istocode.github.io/slideview/images/safari-rounding-error-fixed.png>
+
+
+
+### Dependecies
+None!
+
+
+
+### Compatibility
+Modern & non-buggy Browsers. Known to work and tested in the following & platforms: 
+
+###### Desktop:
+Latest versions of:
+* Chrome & Chrome Canary
+* Firefox
+* Safari
+
+###### Mobile:
+Nexus 4:
+* Chrome
+* Firefox
+
+Safari in these iOS Simulators: 
+* iPhone Retina (4in)
+* iPhone Retina (4in + 64bit)
+* iPad/iPad Retina in horizontal orientation
+
 
 
 ### Docs & Demo
