@@ -27,7 +27,7 @@ If non-modern browsers are a concern, then try the Slideview jQuery plugin (_com
 
 
 
-### Dependecies
+### Dependencies
 None!
 
 
