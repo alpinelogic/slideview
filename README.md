@@ -12,13 +12,17 @@ If non-modern browsers are a concern, then try the Slideview jQuery plugin (_com
 ### Features
 * Tiny/lightweight lib (_a little over 250 lines of code for the VanillaJS version_).
 * Sliding effect happens with a simple 2D CSS transition.
-* In contrast to many other sliders, Slideview.js uses percentages for all of its elements. This means that we don't have to run any JS code when the Browser window resizes like other sliders do. You initialize Slideview once and the slides get resized by the Browser automatically after that.
+* In contrast to many other sliders, Slideview.js uses percentages for all of its elements. This means that we don't have to run any JS code when the Browser window resizes like other sliders do. You initialize Slideview once and the slides get resized by the Browser automatically after that (_see the exception about Safari below_).
 * Simple public API to move the slides programmatically.
 * Easily stylable with CSS - no default styling is assumed!
 * 2 separate libs: plain JavaScript & a jQuery plugin (_jquery plugin coming soon_).
 * Free as in "free beer".
 
-**Warning**: Slideview doesn't try to be perfect for every Browser and doesn't try to fix pixel rounding issues in certain Browsers (_except for Safari Desktop & only if you choose to include the Browser sniffing helper_).
+
+**Note**: Slideview doesn't try to be perfect for every Browser and doesn't try to fix pixel rounding issues in certain Browsers - except for Safari Desktop & only if you choose to include the UserAgent sniffing helper that was extracted from jQuery's source. Here are 2 screenshots showing the rounding error before & after the fix in Safari:
+
+**Before**: <http://istocode.github.io/slideview/images/safari-rounding-error.png> <br>
+**After**: <http://istocode.github.io/slideview/images/safari-rounding-error-fixed.png>
 
 
 ### Docs & Demo
