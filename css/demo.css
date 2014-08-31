@@ -4,29 +4,34 @@
   box-sizing: border-box;
 }
 body {
-  font-size: 116%;
-  padding: 0;
   margin: 0;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 114%;
   color: #48494B;
-  font-family: 'Lato', sans-serif;
-  line-height: 1.5;
+  line-height: 1.4;
   background: #FFF;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  width: 100%;
 }
-.text-center {
-  text-align: center;
+.text-center { text-align: center; }
+.text-thin { font-weight: 300; }
+.text-normal { font-weight: 400; }
+hr { border: none; border-bottom: 1px solid #eee; }
+pre[class*="language-"] { font-size: 15px; }
+:not(pre) > code[class*="language-"], pre[class*="language-"] { background: #2E3136 !important; }
+small { font-size: .665em; }
+h1, h2, h3, h4, p {
+  margin: 0;
+  margin-bottom: .325em;
+  line-height: 1.5;
 }
-hr {
-  border: none;
-  border-bottom: 1px solid #eee;
-}
-pre[class*="language-"] {
-  font-size: 15px;
-}
-:not(pre) > code[class*="language-"], pre[class*="language-"] {
-  background: #323336;
+a {
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+  -ms-transition: .2s;
+  -o-transition: .2s;
+  transition: .2s;
+  text-decoration: none;
 }
 header {
   display: block;
@@ -46,8 +51,7 @@ header, .intro {
   display: table-cell;
   text-align: center;
   vertical-align: middle;
-
-  border-bottom: 8px solid rgba(207, 208, 211, 0.2);
+  border-bottom: 7px solid rgba(207, 208, 211, 0.2);
   padding: 0 1em;
   font-size: 1.125em;
   overflow: hidden;
@@ -55,29 +59,11 @@ header, .intro {
   color: #E6E7E9;
   background: rgba(0, 0, 0, 0.6);
 }
-.intro .lib-name {
-  font-size: 1.25em;
-}
-h1, h2, h3, h4, p {
-  margin: 0;
-  margin-bottom: .325em;
-  line-height: 1.5;
-}
-a {
-  -webkit-transition: .2s;
-  -moz-transition: .2s;
-  -ms-transition: .2s;
-  -o-transition: .2s;
-  transition: .2s;
-}
-.container {
-  padding: 2em 3.5em;
-}
-@media screen and (max-width: 540px) {
-  .container {
-    padding: 1.5em;
-  }
-}
+.intro .lib-name { font-size: 1.25em; }
+.intro h1 { margin-bottom: 0; }
+.intor .lib-desc { margin-top: 0; }
+.container { padding: 2em 3.5em; }
+@media screen and (max-width: 540px) { .container { padding: 1.5em; } }
 .slideview-section {
   display: block;
   margin-bottom: 8%;
@@ -87,11 +73,43 @@ a {
   padding: 10px 2px;
 }
 footer {
-  padding: 1.875em;
+  padding: 2.325em 2em;
   text-align: center;
-  background: #F7F7F7;
-  border-top: 1px solid #EEE;
+  background: #363A41;
+  color: #F1F1F1;
 }
+footer p { margin: 0; }
+footer a { color: #CAA1F0; }
+.btn {
+  display: inline-block;
+  padding: 8px 30px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 3px;
+}
+.btn-default {
+  color: #FFF;
+  background-color: rgba(112, 112, 112, 0.15);
+  border-width: 2px;
+  border-color: #C7C7C7;
+  opacity: .8;
+  font-size: .8em;
+  font-weight: 400;
+}
+.btn-default:hover { opacity: .99; }
+.btn-wrapper { margin-top: 17px; }
 
 
 /**

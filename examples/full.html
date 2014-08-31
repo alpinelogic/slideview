@@ -7,85 +7,21 @@
   <meta name="description" content="A full view example that can be used for banners.">
   <link href="../css/slideview.css?v=0.7.2" rel="stylesheet">
   <style>
+    * {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
-      padding: 0;
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-size: 114%;
+      color: #48494B;
+      line-height: 1.4;
+      background: #FFF;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
-
-    .slideview {
-      height: 100%;
-      opacity: 0;
-      visibility: visible;
-      -webkit-transition: .5s;
-      -moz-transition: .5s;
-      -ms-transition: .5s;
-      -o-transition: .5s;
-      transition: .5s;      
-    }
-
-    .slideview.fade {
-      opacity: 1;
-    }
-
-    .slide {
-      opacity: 0;
-      visibility: visible;
-      border-bottom: 5px solid #564F6B; 
-      background: #464646;
-
-      -webkit-transform: translate3d(0,0,0);
-      -moz-transform: translate3d(0,0,0);
-      -ms-transform: translate3d(0,0,0);
-      -o-transform: translate3d(0,0,0);
-      transform: translate3d(0,0,0);
-
-      -webkit-transition: .8s;
-      -moz-transition: .8s;
-      -ms-transition: .8s;
-      -o-transition: .8s;
-      transition: .8s;
-    }
-
-    .slide.active {
-      opacity: 1;
-      z-index: 10;
-
-      -webkit-transition: .6s;
-      -moz-transition: .6s;
-      -ms-transition: .6s;
-      -o-transition: .6s;
-      transition: .6s;
-    }
-
-    .next-slide {
-      z-index: 5;
-    }
-
-    .slide img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    .offscreen {
-      -webkit-transition: -webkit-transform 0.3s ease-in-out;
-      -moz-transition: -moz-transform 0.3s ease-in-out;
-      -ms-transition: -ms-transform 0.3s ease-in-out;
-      -o-transition: -o-transform 0.3s ease-in-out;
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .nav {
-      position: relative;
-    }
-    .nav a {
-      position: absolute;
-      bottom: 40px;
-      display: inline-block;
-    }
-    .nav .prev { left: 0; left: 30px; }
-    .nav .next { right: 0; right: 30px; }
-
     a {
       color: #428BCA;
       text-decoration: none;
@@ -95,7 +31,6 @@
       -o-transition: .2s;
       transition: .2s;
     }
-
     .btn {
       display: inline-block;
       padding: 7px 14px;
@@ -114,7 +49,6 @@
       background-image: none;
       border: 1px solid rgba(0, 0, 0, 0);
     }
-
     .btn-default {
       color: #F8E8FF;
       background-color: rgba(51, 38, 63, 0.9);
@@ -123,8 +57,76 @@
       font-weight: 600;
     }
     .btn-default:hover { opacity: .99; }
-
     .container { padding: 1.5em 3em; }
+
+
+    /* Slideview Styles */
+    .slideview {
+      height: 100%;
+      opacity: 0;
+      visibility: visible;
+      -webkit-transition: .5s;
+      -moz-transition: .5s;
+      -ms-transition: .5s;
+      -o-transition: .5s;
+      transition: .5s;      
+    }
+    .slideview.fade {
+      opacity: 1;
+    }
+    .slide {
+      opacity: 0;
+      visibility: visible;
+      border-bottom: 5px solid #564F6B; 
+      background: #464646;
+
+      -webkit-transform: translate3d(0,0,0);
+      -moz-transform: translate3d(0,0,0);
+      -ms-transform: translate3d(0,0,0);
+      -o-transform: translate3d(0,0,0);
+      transform: translate3d(0,0,0);
+
+      -webkit-transition: .8s;
+      -moz-transition: .8s;
+      -ms-transition: .8s;
+      -o-transition: .8s;
+      transition: .8s;
+    }
+    .slide.active {
+      opacity: 1;
+      z-index: 10;
+
+      -webkit-transition: .6s;
+      -moz-transition: .6s;
+      -ms-transition: .6s;
+      -o-transition: .6s;
+      transition: .6s;
+    }
+    .next-slide {
+      z-index: 5;
+    }
+    .slide img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .offscreen {
+      -webkit-transition: -webkit-transform 0.3s ease-in-out;
+      -moz-transition: -moz-transform 0.3s ease-in-out;
+      -ms-transition: -ms-transform 0.3s ease-in-out;
+      -o-transition: -o-transform 0.3s ease-in-out;
+      transition: transform 0.3s ease-in-out;
+    }
+    .nav {
+      position: relative;
+    }
+    .nav a {
+      position: absolute;
+      bottom: 40px;
+      display: inline-block;
+    }
+    .nav .prev { left: 0; left: 30px; }
+    .nav .next { right: 0; right: 30px; }
   </style>
 </head>
 <body>
@@ -132,39 +134,39 @@
     <div class="inner">
       <div class="offscreen">
         <div class="slide">
-          <img src="http://unsplash.it/1480/600?image=6">
+          <img src="http://unsplash.it/1480/582?image=6">
         </div>
 
         <div class="slide">
-          <img src="http://unsplash.it/1480/600?image=210">
+          <img src="http://unsplash.it/1480/582?image=210">
         </div>
 
         <div class="slide">
-          <img src="http://unsplash.it/1480/600?image=204">
+          <img src="http://unsplash.it/1480/582?image=204">
         </div>
 
         <div class="slide">
-          <img src="http://unsplash.it/1480/600?image=125">
+          <img src="http://unsplash.it/1480/582?image=125">
         </div>
 
         <div class="slide">
-          <img src="http://unsplash.it/1480/600?image=142">
+          <img src="http://unsplash.it/1480/582?image=142">
         </div>
 
         <div class="slide">
-          <img src="http://unsplash.it/1480/600?image=168">
+          <img src="http://unsplash.it/1480/582?image=168">
         </div>
 
         <div class="slide">
-          <img src="http://unsplash.it/1480/600?image=240">
+          <img src="http://unsplash.it/1480/582?image=240">
         </div>
 
         <div class="slide">
-          <img src="http://unsplash.it/1480/600?image=238">
+          <img src="http://unsplash.it/1480/582?image=238">
         </div>
 
         <div class="slide">
-          <img src="http://unsplash.it/1480/600?image=242">
+          <img src="http://unsplash.it/1480/582?image=242">
         </div>
       </div>
     </div>
