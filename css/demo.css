@@ -3,20 +3,15 @@
  * ===================
  */
 .boxes .slide {
+  margin: 10px 5px;
   text-align: center;
-  /* Create space between slides.*/
-  border-left: 8px solid #FFF;
+  color: #E6E6E6;
   background: #363A41;
 }
-.boxes .slide.active {
-  /* Remove space from the 1st slide.*/
-  border-left: none;
-  background: #594A69
-}
+.boxes .slide.active { background: #594A69; }
 .boxes .slide h3 {
   margin: 0;
   padding: 2.25em 1em;
-  color: #E6E6E6;
 }
 .boxes .nav {
   margin: .5em;
@@ -28,8 +23,8 @@
   padding: .325em 1em;
   font-size: 18px;
   color: #FCFCFC;
-  background: #667292;
   text-decoration: none;
+  background: #667292;
   opacity: .88;
 }
 .boxes .nav a:hover { opacity: 1; }
