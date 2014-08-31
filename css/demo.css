@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  font-size: 120%;
+  font-size: 116%;
   padding: 0;
   margin: 0;
   color: #48494B;
@@ -56,7 +56,7 @@ header, .intro {
   background: rgba(0, 0, 0, 0.6);
 }
 .intro .lib-name {
-  font-size: 1.425em;
+  font-size: 1.25em;
 }
 h1, h2, h3, h4, p {
   margin: 0;
@@ -71,7 +71,12 @@ a {
   transition: .2s;
 }
 .container {
-  padding: 2em;
+  padding: 2em 3.5em;
+}
+@media screen and (max-width: 540px) {
+  .container {
+    padding: 1.5em;
+  }
 }
 .slideview-section {
   display: block;
@@ -93,6 +98,7 @@ footer {
  * Dark Boxes Example.
  * ===================
  */
+#dark-boxes { margin-top: 18px; }
 .boxes .slide {
   text-align: center;
   /* Create space between slides.*/
