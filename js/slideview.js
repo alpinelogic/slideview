@@ -267,6 +267,8 @@ var
     },
 
     _applyClasses: function() {
+      var nextSlide;
+
       this.slides.forEach(function(slide) {
         slide.classList.remove('active');
         slide.classList.remove('next-slide');
@@ -275,7 +277,9 @@ var
 
       this.currentSlide().classList.add('active');
       this.slides[this._index + this.options.slidesToShow - 1].classList.add('last-view-slide');
-      this.slides[this._index + this.options.slidesToShow].classList.add('next-slide');
+
+      nextSlide = this.slides[this._index + this.options.slidesToShow];
+      nextSlide && nextSlide.classList.add('next-slide');
     },
 
     _setIndex: function(index) {
