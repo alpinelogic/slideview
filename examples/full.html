@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Slideview.js - Full view</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A full view example that can be used for banners.">
+  <link href="../css/slideview.css?v=0.7.2" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .slideview {
+      min-height: 542px;
+      opacity: 0;
+      visibility: visible;
+      -webkit-transition: .5s;
+      -moz-transition: .5s;
+      -ms-transition: .5s;
+      -o-transition: .5s;
+      transition: .5s;      
+    }
+    .slideview.fade { opacity: 1; }
+
+
+    .slide {
+      opacity: 0;
+      visibility: visible;
+      border-bottom: 5px solid #564F6B; 
+      background: #464646;
+    }
+
+    .slide.active {
+      opacity: 1;
+      z-index: 10;
+    }
+    .next-slide {
+      z-index: 5;
+    }
+
+    .slide img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .nav {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      left: 0;
+      margin-top: -15px;
+    }
+    .nav a { position: absolute; }
+    .nav .prev { left: 0; margin-left: 21px; }
+    .nav .next { right: 0; margin-right: 21px; }
+
+    a {
+      color: #428BCA;
+      text-decoration: none;
+      -webkit-transition: .2s;
+      -moz-transition: .2s;
+      -ms-transition: .2s;
+      -o-transition: .2s;
+      transition: .2s;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 7px 14px;
+      margin-bottom: 0;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.42857143;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      background-image: none;
+      border: 1px solid rgba(0, 0, 0, 0);
+    }
+
+    .btn-default {
+      color: #F8E8FF;
+      background-color: rgba(51, 38, 63, 0.9);
+      border-color: rgba(116, 71, 151, 0.6);
+      opacity: .88;
+      font-weight: 600;
+    }
+    .btn-default:hover { opacity: .99; }
+
+    .container { padding: 1.5em 3em; }
+  </style>
+</head>
+<body>
+  <header class="slideview" id="full-view">
+    <div class="inner">
+      <div class="offscreen">
+        <div class="slide">
+          <img src="http://unsplash.it/1480/582?image=51">
+        </div>
+
+        <div class="slide">
+          <img src="http://unsplash.it/1480/582?image=110">
+        </div>
+
+        <div class="slide">
+          <img src="http://unsplash.it/1480/582?image=119">
+        </div>
+
+        <div class="slide">
+          <img src="http://unsplash.it/1480/582?image=104">
+        </div>
+
+        <div class="slide">
+          <img src="http://unsplash.it/1480/620?image=114">
+        </div>
+
+        <div class="slide">
+          <img src="http://unsplash.it/1480/620?image=116">
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="#prev" class="prev btn btn-default">&lt;</a>
+      <a href="#next" class="next btn btn-default">&gt;</a>
+    </nav>
+  </header>
+
+
+  <div class="container">
+    <h1>Humanoid</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur ex deleniti autem magni, veritatis facilis obcaecati, perferendis corporis animi ab expedita consequuntur qui tempora dignissimos libero dolores beatae magnam, repellendus!</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda distinctio sapiente consectetur vel ducimus velit optio voluptatum voluptates, aspernatur at minus quod quam officiis dolor incidunt. Voluptatibus consequuntur similique, id. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur ex deleniti autem magni, veritatis facilis obcaecati, perferendis corporis animi ab expedita consequuntur qui tempora dignissimos libero dolores beatae magnam, repellendus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda distinctio sapiente consectetur vel ducimus velit optio voluptatum voluptates, aspernatur at minus quod quam officiis dolor incidunt. Voluptatibus consequuntur similique, id.</p>
+    
+    <p>Pariatur ex deleniti autem magni, veritatis facilis obcaecati, perferendis corporis animi ab expedita consequuntur qui tempora dignissimos libero dolores beatae magnam, repellendus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda distinctio sapiente consectetur vel ducimus velit optio voluptatum voluptates, aspernatur at minus quod quam officiis dolor incidunt. Voluptatibus consequuntur similique, id.</p>
+    
+    <p>Pariatur ex deleniti autem magni, veritatis facilis obcaecati, perferendis corporis animi ab expedita consequuntur qui tempora dignissimos libero dolores beatae magnam, repellendus!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda distinctio sapiente consectetur vel ducimus velit optio voluptatum voluptates, aspernatur at minus quod quam officiis dolor incidunt. Voluptatibus consequuntur similique, id. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur ex deleniti autem magni, veritatis facilis obcaecati, perferendis corporis animi ab expedita consequuntur qui tempora dignissimos libero dolores beatae magnam, repellendus!</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda distinctio sapiente consectetur vel ducimus velit optio voluptatum voluptates, aspernatur at minus quod quam officiis dolor incidunt. Voluptatibus consequuntur similique, id.</p>
+  </div>
+
+  <br><br>
+  <br>
+
+
+  <script src="../js/slideview.js?v=0.7.2"></script>
+  <script> var slideview2 = new Slideview('#full-view', { slidesToShow: 1 }); </script>
+  <script>
+    window.setTimeout(function() { document.querySelector('.slideview').className += ' fade'; },  300);
+  </script>
+</body>
+</html>

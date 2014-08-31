@@ -108,7 +108,7 @@ footer {
 .boxes .slide.active {
   /* Remove space from the 1st slide.*/
   border-left: none;
-  background: #594A69
+  background: #594A69;
 }
 .boxes .slide h3 {
   margin: 0;

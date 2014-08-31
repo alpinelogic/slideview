@@ -1,15 +1,4 @@
 /**
- * Slideview core theme
- */
-.slideview-core img {
-  width: 100%;
-  height: auto;
-  border: 1px solid #CCC;
-  padding: 4px;
-}
-
-
-/**
  * Slideview core styles.
  */
 .slideview, .slideview * {
@@ -31,21 +20,35 @@
   position: relative;
   overflow: hidden;
 
-  -webkit-transition: -webkit-transform 0.3s;
-  -moz-transition: -moz-transform 0.3s;
-  -ms-transition: -ms-transform 0.3s;
-  -o-transition: -o-transform 0.3s;
-  transition: transform 0.3s;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  -moz-transition: -moz-transform 0.3s ease-in-out;
+  -ms-transition: -ms-transform 0.3s ease-in-out;
+  -o-transition: -o-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 .slide {
   display: block;
   float: left;
   height: 100%;
   overflow: hidden;
+  position: relative;
 
-  -webkit-transition: .3s;
-  -moz-transition: .3s;
-  -ms-transition: .3s;
-  -o-transition: .3s;
-  transition: .3s;
+  -webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  -o-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+
+  -webkit-transition: .8s;
+  -moz-transition: .8s;
+  -ms-transition: .8s;
+  -o-transition: .8s;
+  transition: .8s;
+}
+.slide.active {
+  -webkit-transition: .6s;
+  -moz-transition: .6s;
+  -ms-transition: .6s;
+  -o-transition: .6s;
+  transition: .6s;
 }

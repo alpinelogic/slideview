@@ -287,7 +287,7 @@ var
     },
 
     _move: function(offset) {
-      this.offscreenContainer.style[cssPrefix('transform')] = 'translate(' + (-offset) + '%, 0)';
+      this.offscreenContainer.style[cssPrefix('transform')] = 'translate3d(' + (-offset) + '%, 0, 0)';
     },
 
     show: function(index) {
