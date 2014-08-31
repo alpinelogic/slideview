@@ -40,11 +40,6 @@
 .slide {
   display: block;
   float: left;
-
-  /* Very important if you don't want miscalculations.
-   */
-  margin: 0 !important;
-
   height: 100%;
   overflow: hidden;
 

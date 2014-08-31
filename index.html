@@ -5,14 +5,14 @@
   <title>Slideview.js</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="slideview.js - a tiny vanilla JS lib for responsive carousel-like sliders.">
-  <link href="css/slideview.css?v=0.7.0" rel="stylesheet">
+  <link href="css/slideview.css?v=0.7.2" rel="stylesheet">
+  <link href="css/demo.css?v=0.7.2" rel="stylesheet">
   <link href="css/prism.css" rel="stylesheet">
-  <link href="css/demo.css" rel="stylesheet">
 </head>
 <body>
 <header>
   <section class="intro">
-    <h1><span class="lib-name">slideview.js</span> <small>(v0.7.0)</small></h1>
+    <h1><span class="lib-name">slideview.js</span> <small>(v0.7.2)</small></h1>
     <p>A tiny <small>VanillaJS</small> lib for responsive carousel-like sliders. <br> No crazy features!</p>
   </section>
 </header>
@@ -28,18 +28,14 @@
     <br>
     <h2>Features</h2>
     <ul>
-      <li> Tiny/lightweight lib (<em>a little over 250 lines of code for the VanillaJS version</em>).</li>
-      <li> Sliding effect happens with a simple 2D CSS transition.</li>
-      <li> In contrast to many other sliders, Slideview.js uses percentages for all of its elements. This means that we don't have to run any JS code when the Browser window resizes like other sliders do. You initialize Slideview once and the slides get resized by the Browser automatically (<em>see the exception about Safari below</em>).</li>
-      <li> Simple public API to move the slides programmatically.</li>
-      <li> Easily stylable with CSS - no default styling is assumed!</li>
-      <li> 2 separate libs: plain JavaScript &amp; a jQuery plugin.</li>
-      <li> Free as in "free beer".</li>
+      <li>Tiny/lightweight lib (<em>a little over 250 lines of code for the VanillaJS version</em>).</li>
+      <li>Sliding effect happens with a simple 2D CSS transition.</li>
+      <li>In contrast to many other sliders, Slideview.js uses percentages for all of its elements. You initialize Slideview once and the slides get resized by the Browser automatically.</li>
+      <li>Simple public API to move the slides programmatically.</li>
+      <li>Easily stylable with CSS - no default styling is assumed!</li>
+      <li>2 separate libs: plain JavaScript &amp; a jQuery plugin.</li>
+      <li>Free as in "free beer".</li>
     </ul>
-
-    <br>
-
-    <p><strong>Note</strong>: Slideview doesn't try to be perfect for every Browser and doesn't try to fix pixel rounding issues in certain Browsers - except for Safari Desktop &amp; only if you choose to include the UserAgent sniffing helper that was extracted from jQuery's source. Here are 2 screenshots showing the rounding error before &amp; after the fix in Safari: <a href="http://istocode.github.io/slideview/images/safari-rounding-error.png">rounding error</a> &amp; <a href="http://istocode.github.io/slideview/images/safari-rounding-error-fixed.png">fixed rounding error</a></p>
 
     <br><hr>
   </article>
@@ -86,6 +82,21 @@
           </div>
           <div class="slide">
             <h3>12</h3>
+          </div>
+          <div class="slide">
+            <h3>13</h3>
+          </div>
+          <div class="slide">
+            <h3>14</h3>
+          </div>
+          <div class="slide">
+            <h3>15</h3>
+          </div>
+          <div class="slide">
+            <h3>16</h3>
+          </div>
+          <div class="slide">
+            <h3>17</h3>
           </div>
         </div>
       </div>
@@ -177,7 +188,7 @@
   <p>You can get the source from Github: <a href="https://github.com/istocode/slideview">https://github.com/istocode/slideview</a></p>
 </footer>
 
-<script src="js/slideview.js?v=0.7.0"></script>
+<script src="js/slideview.js?v=0.7.2"></script>
 <script> var slideview2 = new Slideview('#dark-boxes', { slidesToShow: 5 }); </script>
 <script src="js/prism.js"></script>
 </body>

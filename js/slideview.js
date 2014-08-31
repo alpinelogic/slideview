@@ -1,49 +1,5 @@
-// UA sniffer - include if you care to fix rounding erros in safari desktop.
-// Borrowed from jQuery 1.8.3
-// http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js
-var ua = (function() {
-  var matched, browser;
-
-  // Use of jQuery.browser is frowned upon.
-  // More details: http://api.jquery.com/jQuery.browser
-  // jQuery.uaMatch maintained for back-compat
-  var _uaMatch = function(ua) {
-    ua = ua.toLowerCase();
-
-    var match = /(chrome)[ \/]([\w.]+)/.exec(ua) ||
-      /(webkit)[ \/]([\w.]+)/.exec(ua) ||
-      /(opera)(?:.*version|)[ \/]([\w.]+)/.exec(ua) ||
-      /(msie) ([\w.]+)/.exec(ua) ||
-      ua.indexOf("compatible") < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec(ua) ||
-      [];
-
-    return {
-      browser: match[ 1 ] || "",
-      version: match[ 2 ] || "0"
-    };
-  };
-
-  matched = _uaMatch(navigator.userAgent);
-  browser = {};
-
-  if (matched.browser) {
-    browser[matched.browser] = true;
-    browser.version = matched.version;
-  }
-
-  // Chrome is Webkit, but Webkit is also Safari.
-  if (browser.chrome) {
-    browser.webkit = true;
-  } else if (browser.webkit) {
-    browser.safari = true;
-  }
-
-  return browser;
-})();
-
-
 /**
- * Slideview (Beta) - v0.7.0
+ * Slideview (Beta) - v0.7.2
  * A tiny VanillaJS lib for responsive carousels.
  * No crazy features!
  */
@@ -70,9 +26,9 @@ var
 
   merge = function() {
     var 
-      source, 
-      prop, 
-      i = 0, 
+      source,
+      prop,
+      i = 0,
       len = arguments.length;
 
     var result = {};
@@ -125,18 +81,35 @@ var
   hide = function(element) { element.style.display = 'none'; },
   showBlock = function(element) { element.style.display = 'block'; },
 
-  cssPrefix = function(prop) {
+  getPrefix = function() {
     var 
       prefixes = ['Webkit', 'Moz', 'O', 'ms'],
       style = document.createElement('div').style,
-      property = prop[0].toUpperCase() + prop.slice(1),
+      property = 'Transform',
       i = 0, len = prefixes.length;
 
     for(i; i < len; i += 1) {
       if((prefixes[i] + property) in style) {
-        return prefixes[i] + property;
+        return prefixes[i];
       }
     }
+  },
+
+  cssPrefix = function(prop) {
+    var prefix = getPrefix();
+
+    if (prefix) {
+      return prefix + prop[0].toUpperCase() + prop.slice(1);
+    } else {
+      return prop;
+    }
+  },
+
+  supportsCssCalc = function() {
+    var el = document.createElement('div');
+    el.style.cssText = 'width: -' + (getPrefix() || '').toLowerCase()  +'-calc(10px)';
+
+    return !!el.style.length;
   },
 
   _getStyles = function(elem) {
@@ -147,11 +120,6 @@ var
     if (computed) {
       return computed.getPropertyValue(prop) || computed[prop];
     }
-  },
-
-  _roundingErrorBrowser = function() {
-    if (!window.ua) { return; }
-    return ua.safari;
   },
 
   // Constants
@@ -167,7 +135,7 @@ var
   // Default settings.
   Slideview.defaults = {
     slidesToShow: 4,
-    resizeDelay: 150
+    resizeDelay: 150 // only for Browsers that may have rounding errors
   };
 
   function Slideview(selector, userOptions) {
@@ -182,7 +150,7 @@ var
     this.slides = slice.call(findAll(SELECTORS.slide, this.element));
     this.nextBtn = find(SELECTORS.next, this.element);
     this.prevBtn = find(SELECTORS.prev, this.element);
-    
+
     // Meta
     this._index = this._currentOffset = 0;
     this._total = (this.slides && this.slides.length) || 0;
@@ -198,30 +166,55 @@ var
 
     this._init();
   }
-  
+
   Slideview.prototype = {
     constructor: Slideview,
 
     _init: function() {
       this._setWidths();
-      this._onResize();
-      this._onClick();
+      this._attachResize();
+      this._attachClick();
     },
 
-    // Safari gets this performance hit because of rounding erros we have to fix on the slides.
-    // This function won't run when the `ua` helper isn't included with the lib.
-    _onResize: function() {
-      if (!_roundingErrorBrowser()) { return; }
+    _attachResize: function() {
       var self = this, timer;
+
+      this._tryFixRoundingError();
 
       on(_window, 'resize',  function(e) {
         this.clearTimeout(timer);
-        timer = this.setTimeout(self._setWidths.bind(self), self.options.resizeDelay);
+        timer = this.setTimeout(self._handleResize.bind(self), self.options.resizeDelay);
       });
     },
 
-    getSlideWidth: function() { return this._slideWidth; },
-    getOffscreenWidth: function() { return this._offscreenWidth; },
+    _handleResize: function() {
+      if (this._roundingError === true) {
+        this._tryFixRoundingError();
+      }
+    },
+
+    // Tries to fix rounding errors (mostly Safari) - just a try, no guarantee.
+    _tryFixRoundingError: function() {
+      var 
+        parentWidth = _curCSS('width', _getStyles(this.element.parentNode)),
+        excessPixels = parseFloat(parentWidth) % this.options.slidesToShow;
+
+        if (excessPixels > 0) {
+          this._roundingError = true;
+          this.element.style.width = parseFloat(parentWidth) - excessPixels + 'px';
+        } else {
+          this._roundingError = false;
+          this.element.style.width =  '';
+        }
+    },
+
+    getSlideWidth: function() {
+      return this._slideWidth;
+    },
+
+    getOffscreenWidth: function() {
+      return this._offscreenWidth;
+    },
 
     _setSlideWidth: function(slide) {
       var 
@@ -229,28 +222,20 @@ var
         marginLeft = _curCSS('marginLeft', computed),
         marginRight = _curCSS('marginRight', computed),
         margins = parseFloat(marginLeft) + parseFloat(marginRight),
-        slideWidth = this.getSlideWidth();
+        slideWidth = this.getSlideWidth(),
+        prefix = (getPrefix() || '').toLowerCase();
 
-        // Assumes that both marginLeft & marginRight have 
-        // the same unit, which should be a percent.
-        // ------------------------------------------------
-        // Set the slide width, minus any margins.
-        slide.style.width = slideWidth - (margins || 0)  + '%';
+        // Subtract possible margins with CSS `calc()`.
+        if (margins > 0 && prefix && supportsCssCalc()) {
+          slide.style.width = '-' + getPrefix() + '-calc(' + slideWidth + '% - ' + marginLeft + ' - ' + marginRight + ')';
+        } else {
+          // When css `calc()` isn't supported margins are assumed to be in percent.
+          slide.style.width = slideWidth - (margins || 0)  + '%';
+        }
     },
 
-    _tryFixRoundingError: function() {
-      var parentWidth = _curCSS('width', _getStyles(this.element.parentNode));
-      this.element.style.width = parseFloat(parentWidth) - parseFloat(parentWidth) % this.options.slidesToShow + 'px';
-    },
-    
     _setWidths: function() {
       var self = this;
-
-      // At least in Safari there is a rounding error, so 
-      // we try to fix it by removing the excess pixel(s).
-      if (_roundingErrorBrowser()) {
-        this._tryFixRoundingError();
-      }
 
       hide(this.offscreenContainer);
       this.offscreenContainer.style.width = this.getOffscreenWidth() + '%';
@@ -263,7 +248,7 @@ var
       showBlock(this.offscreenContainer);
     },
 
-    _onClick: function() {
+    _attachClick: function() {
       var self = this;
 
       on(this.prevBtn, 'click', function(e) {
@@ -281,12 +266,16 @@ var
       return this.slides[this._index];
     },
 
-    _applyActive: function() {
+    _applyClasses: function() {
       this.slides.forEach(function(slide) {
         slide.classList.remove('active');
+        slide.classList.remove('next-slide');
+        slide.classList.remove('last-view-slide');
       });
 
       this.currentSlide().classList.add('active');
+      this.slides[this._index + this.options.slidesToShow - 1].classList.add('last-view-slide');
+      this.slides[this._index + this.options.slidesToShow].classList.add('next-slide');
     },
 
     _setIndex: function(index) {
@@ -312,7 +301,7 @@ var
       }
 
       this._move(this._currentOffset);
-      this._applyActive();
+      this._applyClasses();
     }
   };
 

@@ -7,7 +7,7 @@ body {
   font-size: 120%;
   padding: 0;
   margin: 0;
-  color: #48494B; 
+  color: #48494B;
   font-family: 'Lato', sans-serif;
   line-height: 1.5;
   background: #FFF;
@@ -68,7 +68,7 @@ a {
   -moz-transition: .2s;
   -ms-transition: .2s;
   -o-transition: .2s;
-  transition: .2s;  
+  transition: .2s;
 }
 .container {
   padding: 2em;
@@ -85,7 +85,7 @@ footer {
   padding: 1.875em;
   text-align: center;
   background: #F7F7F7;
-  border-top: 1px solid #EEE;  
+  border-top: 1px solid #EEE;
 }
 
 
@@ -93,14 +93,22 @@ footer {
  * Dark Boxes Example.
  * ===================
  */
-.boxes .slide { text-align: center; }
-.boxes .slide h3 {
-  margin: 0 4px;
-  padding: 2.25em 1em;
-  color: #E6E6E6;
+.boxes .slide {
+  text-align: center;
+  /* Create space between slides.*/
+  border-left: 8px solid #FFF;
   background: #363A41;
 }
-.boxes .active h3 { background: #594A69; }
+.boxes .slide.active {
+  /* Remove space from the 1st slide.*/
+  border-left: none;
+  background: #594A69
+}
+.boxes .slide h3 {
+  margin: 0;
+  padding: 2.25em 1em;
+  color: #E6E6E6;
+}
 .boxes .nav {
   margin: .5em;
   text-align: center;
