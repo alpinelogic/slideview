@@ -149,14 +149,22 @@
   <pre>
   <code class="language-css">
   /* Here are the styles for the carousel above. */
-  .boxes .slide { text-align: center; }
-  .boxes .slide h3 {
-    margin: 0 4px;
-    padding: 2.25em 1em;
-    color: #E6E6E6;
+  .boxes .slide {
+    text-align: center;
+    /* Create space between slides.*/
+    border-left: 8px solid #FFF;
     background: #363A41;
   }
-  .boxes .active h3 { background: #594A69; }
+  .boxes .slide.active {
+    /* Remove space from the 1st slide.*/
+    border-left: none;
+    background: #594A69
+  }
+  .boxes .slide h3 {
+    margin: 0;
+    padding: 2.25em 1em;
+    color: #E6E6E6;
+  }
   .boxes .nav {
     margin: .5em;
     text-align: center;
