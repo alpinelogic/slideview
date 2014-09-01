@@ -7,7 +7,7 @@
  * |_____/|_|_|\__,_|\___| \_/ |_|\___| \_/\_/
  * ---------------------------------------------
  * Slideview (v0.7.2)
- * A tiny VanillaJS lib for responsive carousels.
+ * A tiny VanillaJS lib for responsive sliders.
  * No crazy features!
  */
 Slideview = (function(window) {

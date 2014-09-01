@@ -1,7 +1,7 @@
 Slideview.js
 =========
 
-Slideview is a tiny JS lib for responsive carousel-like sliders (_<http://istocode.github.io/slideview/>_).
+Slideview is a tiny JS lib for responsive sliders (_<http://istocode.github.io/slideview/>_).
 
 ### Why another slider?
 Because every content slider I have tried exeeds 1,000 lines of code. If you only need one feature instead of 99 and you want to support only modern Browsers (IE10+), then Slideview may work for you. IE9 can be supported simply by using any polyfill for the `classList` API.
