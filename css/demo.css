@@ -35,8 +35,7 @@ a {
 }
 header {
   display: block;
-  border-bottom: .425em solid rgba(255, 255, 255, 0.5);
-  background: url('http://unsplash.it/g/1440/420?image=20') center center no-repeat;
+  background: rgba(0, 0, 0, 0.9) url('http://unsplash.it/g/1440/420?image=20') center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;
@@ -57,7 +56,7 @@ header, .intro {
   overflow: hidden;
   text-align: center;
   color: #E6E7E9;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.6);
 }
 .intro .lib-name { font-size: 1.25em; }
 .intro h1 { margin-bottom: 0; }
