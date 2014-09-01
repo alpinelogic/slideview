@@ -6,7 +6,7 @@
  *  ____) | | | (_| |  __/\ V /| |  __/\ V  V /
  * |_____/|_|_|\__,_|\___| \_/ |_|\___| \_/\_/
  * ---------------------------------------------
- * Slideview (v0.7.2)
+ * Slideview (v0.7.5)
  * A tiny VanillaJS lib for responsive sliders.
  * No crazy features!
  */
@@ -56,6 +56,8 @@ var
   on = function(element, type, callback) {
     var types;
 
+    if (!element || !type || !callback) { return; }
+
     if (element.addEventListener) {
       types = type.split(' ')
 
@@ -71,6 +73,8 @@ var
 
   off = function(element, type, callback) {
     var types;
+
+    if (!element || !type || !callback) { return; }
 
     if (element.removeEventListener) {
       types = type.split(' ')
@@ -112,11 +116,27 @@ var
     }
   },
 
-  supportsCssCalc = function() {
-    var el = document.createElement('div');
-    el.style.cssText = 'width: -' + (getPrefix() || '').toLowerCase()  +'-calc(10px)';
+  cssCalc = function() {
+    var 
+      el = document.createElement('div'),
+      result = { support: false },
+      prefixName = getPrefix() || '',
+      prefix = ('-' + prefixName + '-').toLowerCase();
 
-    return !!el.style.length;
+    el.style.cssText = 'width:' + prefix + 'calc(10px)';
+
+    // If doesn't support the prefixed version, try the non-prefixed one.
+    if (!el.style.length) {
+      prefix = '';
+      el.style.cssText = 'width:calc(10px)';
+    }
+
+    if (el.style.length) {
+      result.support = true;
+      result.prefix = prefix;
+    }
+
+    return result;
   },
 
   _getStyles = function(elem) {
@@ -126,6 +146,22 @@ var
   _curCSS = function(prop, computed) {
     if (computed) {
       return computed.getPropertyValue(prop) || computed[prop];
+    }
+  },
+
+  _prefixedTransitionEnd = function() {
+    var el = document.createElement('div'), prop;
+    var names = {
+      'WebkitTransition': 'webkitTransitionEnd',
+      'MozTransition': 'transitionend',
+      'OTransition': 'otransitionend',
+      'transition': 'transitionend'
+    };
+
+    for(prop in names){
+      if(el.style[prop] !== undefined) {
+        return names[prop];
+      }
     }
   },
 
@@ -142,6 +178,7 @@ var
   // Default settings.
   Slideview.defaults = {
     slidesToShow: 4,
+    endSlideBack: false, // when `true` it slides back to the 1st slide when reaching the end
     resizeDelay: 150 // only for Browsers that may have rounding errors
   };
 
@@ -181,6 +218,7 @@ var
       this._setWidths();
       this._attachResize();
       this._attachClick();
+      this._attachTransitionEnd();
     },
 
     _attachResize: function() {
@@ -204,15 +242,61 @@ var
     _tryFixRoundingError: function() {
       var 
         parentWidth = _curCSS('width', _getStyles(this.element.parentNode)),
-        excessPixels = parseFloat(parentWidth) % this.options.slidesToShow;
+        excessPixels = parseFloat(parentWidth) % this.options.slidesToShow;      
 
-        if (excessPixels > 0) {
-          this._roundingError = true;
-          this.element.style.width = parseFloat(parentWidth) - excessPixels + 'px';
-        } else {
-          this._roundingError = false;
-          this.element.style.width =  '';
+      if (excessPixels > 0) {
+        this._roundingError = true;
+        this.element.style.width = parseFloat(parentWidth) - excessPixels + 'px';
+      } else {
+        this._roundingError = false;
+        this.element.style.width =  '';
+      }
+    },
+
+    _attachClick: function() {
+      var self = this;
+
+      on(this.prevBtn, 'click', function(e) {
+        e && e.preventDefault();
+        self.show(self._index - 1);
+      });
+
+      on(this.nextBtn, 'click', function(e) {
+        e && e.preventDefault();
+
+        if (self.options.endSlideBack && (self._index + 1 > self._total - self.options.slidesToShow)) {
+          return self.slideToFirst();
         }
+
+        self.show(self._index + 1);
+      });
+    },
+
+    _attachTransitionEnd: function() {
+      this._transitionend = {
+        type: _prefixedTransitionEnd(),
+        executed: false,
+        callback: this._handleTransitionEnd.bind(this)
+      };
+
+      on(this.offscreenContainer, this._transitionend.type, this._transitionend.callback);
+    },
+
+    _handleTransitionEnd: function(e) {
+      e && e.stopPropagation();
+      var self;
+
+      if (e && e.propertyName === 'transform') {
+        self = this;
+
+        slice.call(this.element.classList).forEach(function(name) {
+          if (name === 'sliding' || name == 'slide-to-first' || name == 'slide-to-last') {
+            self.element.classList.remove(name);
+          }
+        });
+
+        this._transitionend.executed = true;
+      }
     },
 
     getSlideWidth: function() {
@@ -223,6 +307,10 @@ var
       return this._offscreenWidth;
     },
 
+    currentSlide: function() {
+      return this.slides[this._index];
+    },
+
     _setSlideWidth: function(slide) {
       var 
         computed = _getStyles(slide),
@@ -230,15 +318,15 @@ var
         marginRight = _curCSS('marginRight', computed),
         margins = parseFloat(marginLeft) + parseFloat(marginRight),
         slideWidth = this.getSlideWidth(),
-        prefix = (getPrefix() || '').toLowerCase();
+        csscalc = cssCalc();
 
-        // Subtract possible margins with CSS `calc()`.
-        if (margins > 0 && prefix && supportsCssCalc()) {
-          slide.style.width = '-' + getPrefix() + '-calc(' + slideWidth + '% - ' + marginLeft + ' - ' + marginRight + ')';
-        } else {
-          // When css `calc()` isn't supported margins are assumed to be in percent.
-          slide.style.width = slideWidth - (margins || 0)  + '%';
-        }
+      // Subtract possible margins with CSS `calc()`.
+      if (margins > 0 && csscalc.support) {
+        slide.style.width = csscalc.prefix + 'calc(' + slideWidth + '% - ' + marginLeft + ' - ' + marginRight + ')';
+      } else {
+        // When css `calc()` isn't supported margins are assumed to be in percent.
+        slide.style.width = slideWidth - (margins || 0)  + '%';
+      }
     },
 
     _setWidths: function() {
@@ -255,22 +343,8 @@ var
       showBlock(this.offscreenContainer);
     },
 
-    _attachClick: function() {
-      var self = this;
-
-      on(this.prevBtn, 'click', function(e) {
-        e && e.preventDefault();
-        self.show(self._index - 1);
-      });
-
-      on(this.nextBtn, 'click', function(e) {
-        e && e.preventDefault();
-        self.show(self._index + 1);
-      });
-    },
-
-    currentSlide: function() {
-      return this.slides[this._index];
+    _setIndex: function(index) {
+      this._index = Math.min(Math.max(0, index), this._total - 1);
     },
 
     _applyClasses: function() {
@@ -289,30 +363,57 @@ var
       nextSlide && nextSlide.classList.add('next-slide');
     },
 
-    _setIndex: function(index) {
-      this._index = Math.min(Math.max(0, index), this._total - 1);
+    _move: function() {
+      var offset = this._currentOffset === 0 ? 0 : this._currentOffset * -1;
+
+      if (this._transitionend) {
+        this.element.classList.add('sliding');
+        this._transitionend.executed = false;
+      }
+      
+      this.offscreenContainer.style[cssPrefix('transform')] = 'translate(' + offset + '%, 0)';
+      this._applyClasses();
     },
 
-    _move: function(offset) {
-      this.offscreenContainer.style[cssPrefix('transform')] = 'translate(' + (-offset) + '%, 0)';
+    slideToFirst: function() {
+      if (this._index === 0) {
+        return;
+      }
+
+      this._setIndex(this._currentOffset = 0);
+      this.element.classList.add('slide-to-first');
+      this._move();
+    },
+
+    slideToLast: function() {
+      var index = this._total - this.options.slidesToShow;
+
+      if (this._index === index) {
+        return;
+      }
+
+      this._currentOffset = index * this.getSlideWidth();
+
+      this._setIndex(index);
+      this.element.classList.add('slide-to-last');
+      this._move();
     },
 
     show: function(index) {
-      this._setIndex(index);
-
       var slideWidthPercent = this.getSlideWidth();
+
+      this._index !== index && this._setIndex(index);
 
       if(this._index === 0) {
         this._currentOffset = 0;
       } else if(this._index > this._total - this.options.slidesToShow) {
-        this._currentOffset = this._currentOffset;
+        this._currentOffset = slideWidthPercent * (this._total - this.options.slidesToShow);
         this._setIndex(this._total - this.options.slidesToShow);
       } else {
         this._currentOffset = slideWidthPercent * this._index;
       }
 
-      this._move(this._currentOffset);
-      this._applyClasses();
+      this._move();
     }
   };
 
