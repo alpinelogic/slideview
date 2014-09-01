@@ -1,6 +1,6 @@
 /**
  * Slideview (Beta) - v0.7.2
- * A tiny VanillaJS lib for responsive carousels.
+ * A tiny VanillaJS lib for responsive sliders.
  * No crazy features!
  */
 Slideview = (function(window) {
