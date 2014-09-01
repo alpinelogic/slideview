@@ -57,7 +57,7 @@ header, .intro {
   overflow: hidden;
   text-align: center;
   color: #E6E7E9;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.9);
 }
 .intro .lib-name { font-size: 1.25em; }
 .intro h1 { margin-bottom: 0; }
