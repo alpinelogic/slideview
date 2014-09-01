@@ -4,14 +4,11 @@
   <meta charset="utf-8">
   <title>Slideview.js - Full view</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A full view example that can be used for banners.">
-  <link href="../css/slideview.css?v=0.7.2" rel="stylesheet">
+  <meta name="description" content="A full view example that can be used for slideshows.">
+
+  <link href="../css/slideview.css?v=0.7.5" rel="stylesheet">
   <style>
-    * {
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      box-sizing: border-box;
-    }
+    * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
     body {
       margin: 0;
       font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -58,68 +55,92 @@
     }
     .btn-default:hover { opacity: .99; }
     .container { padding: 1.5em 3em; }
+    hr { border: none; border-bottom: 1px solid #eee; }
+    pre[class*="language-"] { font-size: 15px; }
+    :not(pre) > code[class*="language-"], pre[class*="language-"] { background: #2E3136 !important; }
 
 
-    /* Slideview Styles */
+    /**
+     * Full view styles
+     * ---------------------------------------- */
     .slideview {
       height: 100%;
+
+      /* Hide it on init so we can fade it in. */
       opacity: 0;
-      visibility: visible;
-      -webkit-transition: .5s;
-      -moz-transition: .5s;
-      -ms-transition: .5s;
-      -o-transition: .5s;
-      transition: .5s;      
+
+      -webkit-transition: opacity .5s;
+      -moz-transition: opacity .5s;
+      -ms-transition: opacity .5s;
+      -o-transition: opacity .5s;
+      transition: opacity .5s;
     }
-    .slideview.fade {
-      opacity: 1;
-    }
+    .slideview.fadeIn { opacity: 1; }
+
     .slide {
-      opacity: 0;
-      visibility: visible;
-      border-bottom: 5px solid #564F6B; 
-      background: #464646;
+      /* Hide all slides so we can fade in the active 
+       * slide and implement a fadeIn/fadeOut effect. */
+      opacity: 0.2;
 
-      -webkit-transform: translate3d(0,0,0);
-      -moz-transform: translate3d(0,0,0);
-      -ms-transform: translate3d(0,0,0);
-      -o-transform: translate3d(0,0,0);
-      transform: translate3d(0,0,0);
+      min-height: 480px;
 
-      -webkit-transition: .8s;
-      -moz-transition: .8s;
-      -ms-transition: .8s;
-      -o-transition: .8s;
-      transition: .8s;
+      background-position: center center;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      background-size: cover;
+
+      -webkit-transition: opacity .9s;
+      -moz-transition: opacity .9s;
+      -ms-transition: opacity .9s;
+      -o-transition: opacity .9s;
+      transition: opacity .9s;
     }
     .slide.active {
+      /* Fade it in. */
       opacity: 1;
+
+      /* The active one should have a higher z-index 
+       * than the other in case they overlap. */
       z-index: 10;
 
-      -webkit-transition: .6s;
-      -moz-transition: .6s;
-      -ms-transition: .6s;
-      -o-transition: .6s;
-      transition: .6s;
+      -webkit-transition: opacity .6s;
+      -moz-transition: opacity .6s;
+      -ms-transition: opacity .6s;
+      -o-transition: opacity .6s;
+      transition: opacity .6s;
     }
-    .next-slide {
-      z-index: 5;
-    }
+    .next-slide { z-index: 5; }
+
+    /**
+     * Remove the fadeIn/fadeOut while we're sliding all 
+     * the way to the first or last slide.
+     */
+    .slide-to-first .slide, .slide-to-last .slide { opacity: 1; }
+
+    /**
+     * Make sure images fill their container.
+     */
     .slide img {
       display: block;
       width: 100%;
       height: auto;
     }
+
+    /**
+     * Specify a slide transition other than default.
+     */
     .offscreen {
-      -webkit-transition: -webkit-transform 0.3s ease-in-out;
-      -moz-transition: -moz-transform 0.3s ease-in-out;
-      -ms-transition: -ms-transform 0.3s ease-in-out;
-      -o-transition: -o-transform 0.3s ease-in-out;
-      transition: transform 0.3s ease-in-out;
+      -webkit-transition: -webkit-transform 0.35s ease-in-out;
+      -moz-transition: -moz-transform 0.35s ease-in-out;
+      -ms-transition: -ms-transform 0.35s ease-in-out;
+      -o-transition: -o-transform 0.35s ease-in-out;
+      transition: transform 0.35s ease-in-out;
     }
-    .nav {
-      position: relative;
-    }
+
+    /**
+     * Style the nav.
+     */
+    .nav { position: relative; }
     .nav a {
       position: absolute;
       bottom: 40px;
@@ -128,46 +149,22 @@
     .nav .prev { left: 0; left: 30px; }
     .nav .next { right: 0; right: 30px; }
   </style>
+  <link href="../css/prism.css" rel="stylesheet">
 </head>
 <body>
   <header class="slideview" id="full-view">
     <div class="inner">
       <div class="offscreen">
-        <div class="slide">
-          <img src="http://unsplash.it/1480/582?image=6">
-        </div>
-
-        <div class="slide">
-          <img src="http://unsplash.it/1480/582?image=210">
-        </div>
-
-        <div class="slide">
-          <img src="http://unsplash.it/1480/582?image=204">
-        </div>
-
-        <div class="slide">
-          <img src="http://unsplash.it/1480/582?image=125">
-        </div>
-
-        <div class="slide">
-          <img src="http://unsplash.it/1480/582?image=142">
-        </div>
-
-        <div class="slide">
-          <img src="http://unsplash.it/1480/582?image=168">
-        </div>
-
-        <div class="slide">
-          <img src="http://unsplash.it/1480/582?image=240">
-        </div>
-
-        <div class="slide">
-          <img src="http://unsplash.it/1480/582?image=238">
-        </div>
-
-        <div class="slide">
-          <img src="http://unsplash.it/1480/582?image=242">
-        </div>
+        <div class="slide" style="background-image: url(http://unsplash.it/1480/582?image=6);"></div>
+        <div class="slide"  style="background-image: url(http://unsplash.it/1480/582?image=210);"></div>
+        <div class="slide"  style="background-image: url(http://unsplash.it/1480/582?image=204);"></div>
+        <div class="slide"  style="background-image: url(http://unsplash.it/1480/582?image=125);"></div>
+        <div class="slide"  style="background-image: url(http://unsplash.it/1480/582?image=142);"></div>
+        <div class="slide"  style="background-image: url(http://unsplash.it/1480/582?image=168);"></div>
+        <div class="slide"  style="background-image: url(http://unsplash.it/1480/582?image=240);"></div>
+        <div class="slide"  style="background-image: url(http://unsplash.it/1480/582?image=238);"></div>
+        <div class="slide"  style="background-image: url(http://unsplash.it/1480/582?image=242);"></div>
+        <div class="slide"  style="background-image: url(http://unsplash.it/1480/582?image=14);"></div>
       </div>
     </div>
 
@@ -177,28 +174,121 @@
     </nav>
   </header>
 
-
   <div class="container">
-    <h1>Humanoid</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur ex deleniti autem magni, veritatis facilis obcaecati, perferendis corporis animi ab expedita consequuntur qui tempora dignissimos libero dolores beatae magnam, repellendus!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda distinctio sapiente consectetur vel ducimus velit optio voluptatum voluptates, aspernatur at minus quod quam officiis dolor incidunt. Voluptatibus consequuntur similique, id. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur ex deleniti autem magni, veritatis facilis obcaecati, perferendis corporis animi ab expedita consequuntur qui tempora dignissimos libero dolores beatae magnam, repellendus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda distinctio sapiente consectetur vel ducimus velit optio voluptatum voluptates, aspernatur at minus quod quam officiis dolor incidunt. Voluptatibus consequuntur similique, id.</p>
-    
-    <p>Pariatur ex deleniti autem magni, veritatis facilis obcaecati, perferendis corporis animi ab expedita consequuntur qui tempora dignissimos libero dolores beatae magnam, repellendus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda distinctio sapiente consectetur vel ducimus velit optio voluptatum voluptates, aspernatur at minus quod quam officiis dolor incidunt. Voluptatibus consequuntur similique, id.</p>
-    
-    <p>Pariatur ex deleniti autem magni, veritatis facilis obcaecati, perferendis corporis animi ab expedita consequuntur qui tempora dignissimos libero dolores beatae magnam, repellendus!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda distinctio sapiente consectetur vel ducimus velit optio voluptatum voluptates, aspernatur at minus quod quam officiis dolor incidunt. Voluptatibus consequuntur similique, id. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-    
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur ex deleniti autem magni, veritatis facilis obcaecati, perferendis corporis animi ab expedita consequuntur qui tempora dignissimos libero dolores beatae magnam, repellendus!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda distinctio sapiente consectetur vel ducimus velit optio voluptatum voluptates, aspernatur at minus quod quam officiis dolor incidunt. Voluptatibus consequuntur similique, id.</p>
+    <p><a href="/slideview">&lt; Back</a></p>
+    <h1>Full view code</h1>
+
+  <pre>
+  <code class="language-javascript">
+  /**
+   * JS: Create instance
+   * ---------------------------------------- */
+  var slider = new Slideview('#full-view', {
+    slidesToShow: 1,
+    endSlideBack: true // `true` indicates that it slides back to the 1st slide when reaching the end
+  });
+  </code></pre>
+
+  <br>
+
+  <pre>
+  <code class="language-css">
+    /**
+     * Full view styles
+     * ---------------------------------------- */
+    .slideview { height: 100%; }
+
+    .slide {
+      /* Hide all slides so we can fade in the active 
+       * slide and implement a fadeIn/fadeOut effect. */
+      opacity: 0.2;
+
+      min-height: 480px;
+
+      background-position: center center;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      background-size: cover;
+
+      -webkit-transition: opacity .9s;
+      -moz-transition: opacity .9s;
+      -ms-transition: opacity .9s;
+      -o-transition: opacity .9s;
+      transition: opacity .9s;
+    }
+    .slide.active {
+      /* Fade it in. */
+      opacity: 1;
+
+      /* The active one should have a higher z-index 
+       * than the other in case they overlap. */
+      z-index: 10;
+
+      -webkit-transition: opacity .6s;
+      -moz-transition: opacity .6s;
+      -ms-transition: opacity .6s;
+      -o-transition: opacity .6s;
+      transition: opacity .6s;
+    }
+    .next-slide { z-index: 5; }
+
+    /**
+     * Remove the fadeIn/fadeOut while we're sliding all 
+     * the way to the first or last slide.
+     */
+    .slide-to-first .slide, .slide-to-last .slide { opacity: 1; }
+
+    /**
+     * Make sure images fill their container.
+     */
+    .slide img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /**
+     * Specify a slide transition other than default.
+     */
+    .offscreen {
+      -webkit-transition: -webkit-transform 0.35s ease-in-out;
+      -moz-transition: -moz-transform 0.35s ease-in-out;
+      -ms-transition: -ms-transform 0.35s ease-in-out;
+      -o-transition: -o-transform 0.35s ease-in-out;
+      transition: transform 0.35s ease-in-out;
+    }
+
+    /**
+     * Style the nav.
+     */
+    .nav { position: relative; }
+    .nav a {
+      position: absolute;
+      bottom: 40px;
+      display: inline-block;
+    }
+    .nav .prev { left: 0; left: 30px; }
+    .nav .next { right: 0; right: 30px; }
+  </code></pre>
+
   </div>
 
   <br><br>
   <br>
 
 
-  <script src="../js/slideview.js?v=0.7.2"></script>
-  <script> var slideview2 = new Slideview('#full-view', { slidesToShow: 1 }); </script>
+  <script src="../js/slideview.js?v=0.7.5"></script>
   <script>
-    window.setTimeout(function() { document.querySelector('.slideview').className += ' fade'; },  300);
+      window.setTimeout(function() {
+        document.querySelector('.slideview').className += ' fadeIn';
+      }, 300);
+    
+      // Create a Slideview instance
+      var slider = new Slideview('#full-view', {
+        slidesToShow: 1,
+        endSlideBack: true
+      });
   </script>
+  <script src="../js/prism.js"></script>
 </body>
 </html>

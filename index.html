@@ -5,14 +5,14 @@
   <title>Slideview.js</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="slideview.js - a tiny vanilla JS lib for responsive sliders.">
-  <link href="css/slideview.css?v=0.7.2" rel="stylesheet">
-  <link href="css/demo.css?v=0.7.2" rel="stylesheet">
+  <link href="css/slideview.css?v=0.7.5" rel="stylesheet">
+  <link href="css/demo.css?v=0.7.5" rel="stylesheet">
   <link href="css/prism.css" rel="stylesheet">
 </head>
 <body>
 <header>
   <div class="intro">
-    <h1><span class="lib-name">Slideview<span class="text-normal">.js</span></span> <small class="text-thin">(v0.7.2)</small></h1>
+    <h1><span class="lib-name">Slideview<span class="text-normal">.js</span></span> <small class="text-thin">(v0.7.5)</small></h1>
     <p class="lib-desc">A tiny vanilla JS lib for responsive sliders. <br> No crazy features!</p>
     <p class="text-center btn-wrapper"><a href="https://github.com/istocode/slideview" class="prev btn btn-default">Download</a></p>
   </div>
@@ -22,13 +22,13 @@
 <div class="container">
   <div>
     <h2>Why Slideview?</h2><hr>
-    <p>Because every content slider I have tried exeeds 1,000 lines of code. If you only need one feature instead of 99 and you want to support only modern Browsers <small>(IE10+)</small>, then <strong>Slideview</strong> may work for you. IE9 can be supported simply by using any polyfill for the <b>classList</b> API. If non-modern browsers are a concern, then try the Slideview jQuery plugin.</p>
+    <p>Because every content slider I have tried exeeds 1,000 lines of code. If you only need one feature instead of 99 and you want to support only modern Browsers <small>(IE10+)</small>, then <strong>Slideview</strong> may work for you. IE9 can be supported simply by using a <a href="https://github.com/remy/polyfills/blob/master/classList.js">polyfill</a> for the <b>classList</b> API. If non-modern browsers are a concern, then try the Slideview jQuery plugin.</p>
 
     <br><br>
     <h2>Features</h2>
     <hr>
     <ul>
-      <li>Tiny/lightweight lib (<em>a little over 250 lines of code for the VanillaJS version</em>).</li>
+      <li>Tiny/lightweight lib (<em>a little over 350 lines of code for the VanillaJS version</em>).</li>
       <li>Sliding effect happens with a simple CSS transition.</li>
       <li>In contrast to many other sliders, Slideview.js uses percentages for all of its slides. You initialize Slideview once and the slides get resized by the Browser automatically.</li>
       <li>Simple public API to move the slides programmatically.</li>
@@ -191,8 +191,8 @@
   <p>You can get the source from Github: <a href="https://github.com/istocode/slideview">https://github.com/istocode/slideview</a></p>
 </footer>
 
-<script src="js/slideview.js?v=0.7.2"></script>
-<script> var slideview2 = new Slideview('#dark-boxes', { slidesToShow: 5 }); </script>
+<script src="js/slideview.js?v=0.7.5"></script>
+<script> var slider = new Slideview('#dark-boxes', { slidesToShow: 5 }); </script>
 <script src="js/prism.js"></script>
 </body>
 </html>
