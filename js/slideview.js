@@ -1,9 +1,17 @@
 /**
- * Slideview (Beta) - v0.7.5
+ *   _____ _ _     _            _
+ *  / ____| (_)   | |          (_)
+ * | (___ | |_  __| | _____   ___  _____      __
+ *  \___ \| | |/ _` |/ _ \ \ / / |/ _ \ \ /\ / /
+ *  ____) | | | (_| |  __/\ V /| |  __/\ V  V /
+ * |_____/|_|_|\__,_|\___| \_/ |_|\___| \_/\_/
+ * ---------------------------------------------
+ * Slideview (v0.7.5)
  * A tiny VanillaJS lib for responsive sliders.
  * No crazy features!
  */
-Slideview = (function(window) {
+!(function(window) {
+  'use strict';
 
 var 
   _window = window,
@@ -52,7 +60,7 @@ var
     if (!element || !type || !callback) { return; }
 
     if (element.addEventListener) {
-      types = type.split(' ')
+      types = type.split(' ');
 
       if (types.length > 1) {
         types.forEach(function(t) {
@@ -70,7 +78,7 @@ var
     if (!element || !type || !callback) { return; }
 
     if (element.removeEventListener) {
-      types = type.split(' ')
+      types = type.split(' ');
 
       if (types.length > 1) {
         types.forEach(function(t) {
@@ -88,7 +96,7 @@ var
   getPrefix = function() {
     var 
       prefixes = ['Webkit', 'Moz', 'O', 'ms'],
-      style = document.createElement('div').style,
+      style = _document.createElement('div').style,
       property = 'Transform',
       i = 0, len = prefixes.length;
 
@@ -111,7 +119,7 @@ var
 
   cssCalc = function() {
     var 
-      el = document.createElement('div'),
+      el = _document.createElement('div'),
       result = { support: false },
       prefixName = getPrefix() || '',
       prefix = ('-' + prefixName + '-').toLowerCase();
@@ -133,7 +141,7 @@ var
   },
 
   _getStyles = function(elem) {
-    return window.getComputedStyle(elem, null);
+    return _window.getComputedStyle(elem, null);
   },
 
   _curCSS = function(prop, computed) {
@@ -143,7 +151,7 @@ var
   },
 
   _prefixedTransitionEnd = function() {
-    var el = document.createElement('div'), prop;
+    var el = _document.createElement('div'), prop;
     var names = {
       'WebkitTransition': 'webkitTransitionEnd',
       'MozTransition': 'transitionend',
@@ -156,10 +164,10 @@ var
         return names[prop];
       }
     }
-  },
+  };
 
   // Constants
-  SELECTORS = {
+  var SELECTORS = {
     plugin: '.slideview',
     slide: '.slide',
     offscreen: '.offscreen',
@@ -171,8 +179,12 @@ var
   // Default settings.
   Slideview.defaults = {
     slidesToShow: 4,
-    endSlideBack: false, // when `true` it slides back to the 1st slide when reaching the end
-    resizeDelay: 150 // only for Browsers that may have rounding errors
+
+    // when `true` it slides back to the 1st slide when reaching the end
+    endSlideBack: false,
+
+    // only for Browsers that may have rounding errors
+    resizeDelay: 150
   };
 
   function Slideview(selector, userOptions) {
@@ -256,8 +268,9 @@ var
 
       on(this.nextBtn, 'click', function(e) {
         e && e.preventDefault();
+        var hasReachedEnd = (self._index + 1 > self._total - self.options.slidesToShow);
 
-        if (self.options.endSlideBack && (self._index + 1 > self._total - self.options.slidesToShow)) {
+        if (self.options.endSlideBack && hasReachedEnd) {
           return self.slideToFirst();
         }
 
@@ -283,7 +296,7 @@ var
         self = this;
 
         slice.call(this.element.classList).forEach(function(name) {
-          if (name === 'sliding' || name == 'slide-to-first' || name == 'slide-to-last') {
+          if (name === 'sliding' || name === 'slide-to-first' || name === 'slide-to-last') {
             self.element.classList.remove(name);
           }
         });
@@ -311,11 +324,13 @@ var
         marginRight = _curCSS('marginRight', computed),
         margins = parseFloat(marginLeft) + parseFloat(marginRight),
         slideWidth = this.getSlideWidth(),
-        csscalc = cssCalc();
+        csscalc = cssCalc(),
+        calcRule;
 
       // Subtract possible margins with CSS `calc()`.
       if (margins > 0 && csscalc.support) {
-        slide.style.width = csscalc.prefix + 'calc(' + slideWidth + '% - ' + marginLeft + ' - ' + marginRight + ')';
+        calcRule = 'calc(' + slideWidth + '% - ' + marginLeft + ' - ' + marginRight + ')';
+        slide.style.width = csscalc.prefix + calcRule;
       } else {
         // When css `calc()` isn't supported margins are assumed to be in percent.
         slide.style.width = slideWidth - (margins || 0)  + '%';
@@ -410,5 +425,6 @@ var
     }
   };
 
-  return Slideview;
+  // Export
+  _window.Slideview = Slideview;
 }(window));
