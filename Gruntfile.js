@@ -79,8 +79,7 @@ module.exports = function(grunt) {
         force: true,
 
         // Ignore warnings
-        '-W030': true, // `e && e.preventDefault()` warning
-        // '-W004': true, // already defined warning
+        '-W030': true, // `e && e.preventDefault()`
         '-W098': true, // is defined but never used
 
         globals: {
@@ -103,10 +102,10 @@ module.exports = function(grunt) {
         'unused'        : true,     // Require all defined variables be used
         'strict'        : true,     // Requires all functions run in ES5 Strict Mode
         'maxparams'     : 3,        // {int} Max number of formal params allowed per function
-        'maxlen'        : 100,       // {int} Max number of characters per line
+        'maxlen'        : 100,      // {int} Max number of characters per line
 
         // Relaxing
-        'debug'         : true,     // true: Allow debugger statements e.g. browser breakpoints.
+        'debug'         : true,     // Allow debugger statements e.g. browser breakpoints.
       },
 
       src: ['slideview.js']
