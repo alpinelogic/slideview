@@ -1,0 +1,3 @@
+  // Export
+  _window.Slideview = Slideview;
+}(window));
