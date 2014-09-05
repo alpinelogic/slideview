@@ -34,6 +34,7 @@ a {
   text-decoration: none;
 }
 header {
+  margin-bottom: 1em;
   display: block;
   background: rgba(0, 0, 0, 0.9) url('http://unsplash.it/g/1440/420?image=20') center center no-repeat;
   -webkit-background-size: cover;
