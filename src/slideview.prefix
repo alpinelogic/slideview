@@ -6,7 +6,7 @@
  *  ____) | | | (_| |  __/\ V /| |  __/\ V  V /
  * |_____/|_|_|\__,_|\___| \_/ |_|\___| \_/\_/
  * ---------------------------------------------
- * Slideview (v{{@VERSION}})
+ * Slideview (v@VERSION)
  * A tiny VanillaJS lib for responsive sliders.
  * No crazy features!
  */

@@ -26,7 +26,7 @@ module.exports = function(grunt) {
           'src/<%= pkg.name %>.suffix'
         ],
 
-        dest: '<%= pkg.name %>.js'
+        dest: '<%= pkg.name %>-<%= pkg.version %>.js'
       }
     },
 
@@ -37,38 +37,31 @@ module.exports = function(grunt) {
     'string-replace': {
       version: {
         files: {
-          '<%= pkg.name %>.js': ['<%= pkg.name %>.js'],
-          'README.md': 'README.md'
+          '<%= pkg.name %>-<%= pkg.version %>.js': '<%= pkg.name %>-<%= pkg.version %>.js'
         },
         options: {
           replacements: [
             {
-              pattern: '{{@VERSION}}',
+              pattern: '@VERSION',
               replacement: '<%= pkg.version %>'
+            }
+          ]
+        }
+      },
+
+      readme_version: {
+        files: {'README.md': 'README.md'},
+        options: {
+          replacements: [
+            {
+              pattern: /(### Version)(\n)(\d\.\d\.\d)?/,
+              replacement: '### Version\n<%= pkg.version %>'
             }
           ]
         }
       }
     },
 
-
-    /** 
-     * UGLIFY JS
-     */
-    uglify: {
-      options: {
-        banner: '<%= meta.banner %>',
-        report: 'gzip',
-        compress: true,
-        drop_console: true
-      },
-
-      dist: {
-        files: {
-          '<%= pkg.name %>.min.js': ['<%= pkg.name %>.js']
-        }
-      }
-    },
 
     /**
      * JSHINT
@@ -107,7 +100,26 @@ module.exports = function(grunt) {
         'debug'    : true,     // Allow debugger statements e.g. browser breakpoints.
       },
 
-      src: ['<%= pkg.name %>.js']
+      src: ['<%= pkg.name %>-<%= pkg.version %>.js']
+    },
+
+
+    /** 
+     * UGLIFY JS
+     */
+    uglify: {
+      options: {
+        banner: '<%= meta.banner %>',
+        report: 'gzip',
+        compress: true,
+        drop_console: true
+      },
+
+      dist: {
+        files: {
+          '<%= pkg.name %>-<%= pkg.version %>.min.js': ['<%= pkg.name %>-<%= pkg.version %>.js']
+        }
+      }
     },
 
 
@@ -136,6 +148,6 @@ module.exports = function(grunt) {
   ].forEach(grunt.loadNpmTasks);
 
   // The default task.
-  grunt.registerTask('default', ['concat', 'string-replace', 'uglify', 'jshint']);
+  grunt.registerTask('default', ['concat', 'string-replace', 'jshint', 'uglify']);
 
 };

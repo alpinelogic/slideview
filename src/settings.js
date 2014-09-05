@@ -8,8 +8,6 @@
     next: '.next'
   };  
 
-  Slideview.version = '{{@VERSION}}';
-
   // Default options.
   Slideview.defaults = {
     slidesToShow: 4,
