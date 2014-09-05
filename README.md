@@ -30,23 +30,51 @@ None!
 
 
 ### Compatibility
-Modern Browsers. Tested on the following Browsers & platforms:
+Tested on the following modern Browsers & platforms:
 
-##### Desktop:
-Latest versions of:
-* Chrome & Chrome Canary
-* Firefox
-* Safari
-
-##### Mobile:
-Nexus 4:
-* Chrome
-* Firefox
-
-Safari in these iOS Simulators:
-* iPhone 3.5in
-* iPhone Retina 4in
-* iPad & iPad Retina
+##### Desktop & Mobile:
+<table>
+  <thead>
+    <tr>
+      <th>Browser</th>
+      <th>Platform</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Chrome & Chrome Canary</td>
+      <td>Desktop</td>
+    </tr>
+    <tr>
+      <td>Firefox</td>
+      <td>Desktop</td>
+    </tr>
+    <tr>
+      <td>Safari</td>
+      <td>Desktop</td>
+    </tr>
+    <tr>
+      <td>Firefox</td>
+      <td>Nexus 4 (Android)</td>
+    </tr>
+    <tr>
+      <td>Chrome</td>
+      <td>Nexus 4 (Android)</td>
+    </tr>
+    <tr>
+      <td>Safari</td>
+      <td>iPhone 3.5in</td>
+    </tr>
+    <tr>
+      <td>Safari</td>
+      <td>iPhone Retina 4in</td>
+    </tr>
+    <tr>
+      <td>Safari</td>
+      <td>iPad & iPad Retina</td>
+    </tr>
+  </tbody>
+</table>
 
 
 
