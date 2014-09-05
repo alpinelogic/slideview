@@ -80,7 +80,6 @@ module.exports = function(grunt) {
 
         // Ignore warnings
         '-W030': true, // `e && e.preventDefault()`
-        '-W098': true, // is defined but never used
 
         globals: {
           window: true
@@ -99,7 +98,7 @@ module.exports = function(grunt) {
         'plusplus' : true,     // Prohibit use of `++` & `--`
         'quotmark' : 'single', // Require single quotes
         'undef'    : true,     // Require all non-global variables to be declared (prevents global leaks)
-        'unused'   : true,     // Require all defined variables be used
+        'unused'   : false,     // Require all defined variables be used
         'strict'   : true,     // Requires all functions run in ES5 Strict Mode
         'maxparams': 3,        // Max number of formal params allowed per function
         'maxlen'   : 100,      // Max number of characters per line
