@@ -19,15 +19,15 @@ module.exports = function(grunt) {
 
       scripts: {
         src: [
-          'src/slideview.prefix',
+          'src/<%= pkg.name %>.prefix',
           'src/helpers.js',
           'src/constants.js',
           'src/options.js',
-          'src/slideview.js',
-          'src/slideview.suffix'
+          'src/<%= pkg.name %>.js',
+          'src/<%= pkg.name %>.suffix'
         ],
 
-        dest: 'slideview.js'
+        dest: '<%= pkg.name %>.js'
       }
     },
 
@@ -38,7 +38,7 @@ module.exports = function(grunt) {
     'string-replace': {
       version: {
         files: {
-          'slideview.js': ['slideview.js']
+          '<%= pkg.name %>.js': ['<%= pkg.name %>.js']
         },
         options: {
           replacements: [
@@ -65,7 +65,7 @@ module.exports = function(grunt) {
 
       dist: {
         files: {
-          'slideview.min.js': ['slideview.js']
+          '<%= pkg.name %>.min.js': ['<%= pkg.name %>.js']
         }
       }
     },
@@ -108,7 +108,7 @@ module.exports = function(grunt) {
         'debug'    : true,     // Allow debugger statements e.g. browser breakpoints.
       },
 
-      src: ['slideview.js']
+      src: ['<%= pkg.name %>.js']
     },
 
 
@@ -117,7 +117,7 @@ module.exports = function(grunt) {
      */
     watch: {
       scripts: {
-        files: ['src/**/*.js', 'src/slideview.prefix', 'src/slideview.suffix'],
+        files: ['src/**/*.js', 'src/<%= pkg.name %>.prefix', 'src/<%= pkg.name %>.suffix'],
         tasks: ['default'],
         options: { spawn: false }
       }
