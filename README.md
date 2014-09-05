@@ -4,7 +4,7 @@ Slideview.js
 Slideview is a tiny, pure JS lib for responsive sliders (_<http://istocode.github.io/slideview/>_).
 
 ### Why another slider?
-Because every content slider I have tried exeeds 1,000 lines of code. If you only need one feature instead of 99 and you want to support only modern Browsers (IE10+), then Slideview may work for you. IE9 can be supported simply by using any polyfill for the `classList` API.
+Because every content slider I have tried exeeds 1,000 lines of code. If you only need one feature instead of 99 and you want to support only modern Browsers (IE10+), then Slideview may work for you. IE9 can be supported simply by using any polyfill for the [classList](https://github.com/remy/polyfills/blob/master/classList.js) API.
 
 If non-modern browsers are a concern, then try the Slideview jQuery plugin (_coming soon_).
 
