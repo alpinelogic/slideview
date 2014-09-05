@@ -38,7 +38,8 @@ module.exports = function(grunt) {
     'string-replace': {
       version: {
         files: {
-          '<%= pkg.name %>.js': ['<%= pkg.name %>.js']
+          '<%= pkg.name %>.js': ['<%= pkg.name %>.js'],
+          'README.md': 'README.md'
         },
         options: {
           replacements: [
@@ -98,7 +99,7 @@ module.exports = function(grunt) {
         'plusplus' : true,     // Prohibit use of `++` & `--`
         'quotmark' : 'single', // Require single quotes
         'undef'    : true,     // Require all non-global variables to be declared (prevents global leaks)
-        'unused'   : false,     // Require all defined variables be used
+        'unused'   : false,    // Require all defined variables be used
         'strict'   : true,     // Requires all functions run in ES5 Strict Mode
         'maxparams': 3,        // Max number of formal params allowed per function
         'maxlen'   : 100,      // Max number of characters per line

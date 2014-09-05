@@ -20,6 +20,11 @@ If non-modern browsers are a concern, then try the Slideview jQuery plugin (_com
 
 
 
+### Version
+0.7.5
+
+
+
 ### Dependencies
 None!
 
