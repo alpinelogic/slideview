@@ -174,9 +174,9 @@ var
     nav: '.nav',
     prev: '.prev',
     next: '.next'
-  };
+  };  
 
-  // Default settings.
+  // Default options.
   Slideview.defaults = {
     slidesToShow: 4,
 
