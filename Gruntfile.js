@@ -21,8 +21,7 @@ module.exports = function(grunt) {
         src: [
           'src/<%= pkg.name %>.prefix',
           'src/helpers.js',
-          'src/constants.js',
-          'src/options.js',
+          'src/settings.js',
           'src/<%= pkg.name %>.js',
           'src/<%= pkg.name %>.suffix'
         ],
