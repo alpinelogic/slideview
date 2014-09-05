@@ -32,7 +32,6 @@ None!
 ### Compatibility
 Tested on the following modern Browsers & platforms:
 
-##### Desktop & Mobile:
 <table>
   <thead>
     <tr>
