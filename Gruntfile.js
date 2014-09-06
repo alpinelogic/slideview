@@ -54,8 +54,8 @@ module.exports = function(grunt) {
         options: {
           replacements: [
             {
-              pattern: /(### Version)(\n)(\d\.\d\.\d)?/,
-              replacement: '### Version\n<%= pkg.version %>'
+              pattern: /(## Version)(\n)(\d\.\d\.\d)?/,
+              replacement: '## Version\n<%= pkg.version %>'
             }
           ]
         }
