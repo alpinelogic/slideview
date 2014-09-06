@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Slideview.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="slideview.js - a tiny vanilla JS lib for responsive sliders.">
+  <link href="src/css/slideview.css?v=0.7.5" rel="stylesheet">
+
+  <link href="demo/css/demo.css?v=0.7.5" rel="stylesheet">
+  <link href="demo/css/examples.css?v=0.7.5" rel="stylesheet">
+  <link href="demo/css/prism.css" rel="stylesheet">
+</head>
+<body>
+<header class="landing-header">
+  <div class="intro">
+    <h1><span class="lib-name">Slideview<span class="text-normal">.js</span></span> <small class="text-thin">(v0.7.5)</small></h1>
+    <p class="lib-desc">A tiny vanilla JS lib for responsive sliders. <br> No crazy features!</p>
+    <p class="text-center btn-wrapper"><a href="https://github.com/istocode/slideview" class="prev btn btn-default">Download</a></p>
+  </div>
+</header>
+
+
+<div class="container">
+  <div>
+    <h2>Why Slideview?</h2><hr>
+    <p>Because every content slider I have tried exeeds 1,000 lines of code. If you only need one feature instead of 99 and you want to support only modern Browsers <small>(IE10+)</small>, then <strong>Slideview</strong> may work for you. IE9 can be supported <small>(without CSS transitions)</small> simply by using a <a href="https://github.com/remy/polyfills/blob/master/classList.js" target="_blank">polyfill</a> for the <b>classList</b> API. If non-modern browsers are a concern, then try the Slideview jQuery plugin.</p>
+
+    <br><br>
+    <h2>Features</h2>
+    <hr>
+    <ul>
+      <li>Tiny/lightweight lib (<em>a little over 350 lines of code for the VanillaJS version</em>).</li>
+      <li>Sliding effect happens with a simple CSS transition.</li>
+      <li>In contrast to many other sliders, Slideview.js uses percentages for all of its slides. You initialize Slideview once and the slides get resized by the Browser automatically.</li>
+      <li>Simple public API to move the slides programmatically.</li>
+      <li>Easily stylable with CSS - no default styling is assumed!</li>
+      <li>2 separate libs: plain JavaScript &amp; a jQuery plugin.</li>
+      <li>Free as in "free beer".</li>
+    </ul>
+
+    <br>
+  </div>
+
+  <br>
+
+  <div class="slideview-section">
+    <h2>Example <small style="font-size:.5em;vertical-align:middle">(<a href="demo/examples/full.html">full view example</a>)</small></h2><hr>
+    <div class="slideview boxes" id="dark-boxes">
+      <div class="inner">
+        <div class="offscreen">
+          <div class="slide">
+            <h3>1</h3>
+          </div>
+          <div class="slide">
+            <h3>2</h3>
+          </div>
+          <div class="slide">
+            <h3>3</h3>
+          </div>
+          <div class="slide">
+            <h3>4</h3>
+          </div>
+          <div class="slide">
+            <h3>5</h3>
+          </div>
+          <div class="slide">
+            <h3>6</h3>
+          </div>
+          <div class="slide">
+            <h3>7</h3>
+          </div>
+          <div class="slide">
+            <h3>8</h3>
+          </div>
+          <div class="slide">
+            <h3>9</h3>
+          </div>
+          <div class="slide">
+            <h3>10</h3>
+          </div>
+          <div class="slide">
+            <h3>11</h3>
+          </div>
+          <div class="slide">
+            <h3>12</h3>
+          </div>
+          <div class="slide">
+            <h3>13</h3>
+          </div>
+          <div class="slide">
+            <h3>14</h3>
+          </div>
+          <div class="slide">
+            <h3>15</h3>
+          </div>
+          <div class="slide">
+            <h3>16</h3>
+          </div>
+          <div class="slide">
+            <h3>17</h3>
+          </div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="#prev" class="prev">&lt;</a>
+        <a href="#next" class="next">&gt;</a>
+      </nav>
+    </div>
+
+
+    <br>
+    <br>
+    <p><b>1.</b> First you must include the core CSS file and the JS lib.</p>
+  <pre>
+  <code class="language-css">
+  &lt;link href="css/slideview.css" rel="stylesheet"&gt;
+  &lt;script src="js/slideview.js">&lt;/script&gt;
+  </code></pre>
+  <br>
+
+
+    <p><b>2.</b> Then create the HTML.</p>
+  <pre>
+  <code class="language-css">
+    &lt;div class="slideview boxes" id="dark-boxes"&gt;
+      &lt;div class="inner"&gt;
+        &lt;div class="offscreen"&gt;
+          &lt;div class="slide"&gt;
+            &lt;h3&gt;1&gt;/h3&gt;
+          &lt;/div&gt;
+
+          &lt;div class="slide"&gt;
+            &lt;h3&gt;2&lt;/h3&gt;
+          &lt;/div&gt;
+          ...
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;nav class="nav"&gt;
+        &lt;a href="#prev" class="prev"&gt;prev&lt;/a&gt;
+        &lt;a href="#next" class="next"&gt;next&lt;/a&gt;
+      &lt;/nav&gt;
+    &lt;/div&gt;
+  </code></pre>
+
+  <br>
+
+    <p><b>3.</b> Now you can style Slideview as you please and create a new instance in JavaScript.</p>
+  <pre>
+  <code class="language-css">
+  /* Here are the styles for the slider above. */
+  .boxes .slide {
+    margin: 10px 5px;
+    text-align: center;
+    color: #E6E6E6;
+    background: #363A41;
+  }
+  .boxes .slide.active { background: #594A69; }
+  .boxes .slide h3 {
+    margin: 0;
+    padding: 2.25em 1em;
+  }
+  .boxes .nav {
+    margin: .5em;
+    text-align: center;
+  }
+  .boxes .nav a {
+    display: inline-block;
+    margin: 0 .125em;
+    padding: .325em 1em;
+    font-size: 18px;
+    color: #FCFCFC;
+    text-decoration: none;
+    background: #667292;
+    opacity: .88;
+  }
+  .boxes .nav a:hover { opacity: 1; }
+  </code>
+  <code class="language-javascript">
+  // JS
+  var slideview = new Slideview('#dark-boxes', {
+    slidesToShow: 5
+  });
+  </code></pre>
+  </div>
+</div>
+
+
+
+<footer>
+  <p>You can get the source from Github: <a href="https://github.com/istocode/slideview">https://github.com/istocode/slideview</a></p>
+</footer>
+
+<script src="slideview-0.7.5.js"></script>
+<script> var slider = new Slideview('#dark-boxes', { slidesToShow: 5 }); </script>
+<script src="demo/js/prism.js"></script>
+</body>
+</html>
