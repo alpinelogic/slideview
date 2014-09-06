@@ -19,11 +19,11 @@ module.exports = function(grunt) {
 
       scripts: {
         src: [
-          'src/<%= pkg.name %>.prefix',
-          'src/helpers.js',
-          'src/settings.js',
-          'src/<%= pkg.name %>.js',
-          'src/<%= pkg.name %>.suffix'
+          'src/js/<%= pkg.name %>.prefix',
+          'src/js/helpers.js',
+          'src/js/settings.js',
+          'src/js/<%= pkg.name %>.js',
+          'src/js/<%= pkg.name %>.suffix'
         ],
 
         dest: '<%= pkg.name %>-<%= pkg.version %>.js'
@@ -128,7 +128,7 @@ module.exports = function(grunt) {
      */
     watch: {
       scripts: {
-        files: ['src/**/*.js', 'src/<%= pkg.name %>.prefix', 'src/<%= pkg.name %>.suffix'],
+        files: ['src/**/*.js', 'src/**/<%= pkg.name %>.prefix', 'src/**/<%= pkg.name %>.suffix'],
         tasks: ['default'],
         options: { spawn: false }
       }
