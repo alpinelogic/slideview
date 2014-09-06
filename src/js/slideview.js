@@ -49,9 +49,7 @@
     },
 
     _handleResize: function() {
-      if (this._roundingError === true) {
-        this._tryFixRoundingError();
-      }
+      this._tryFixRoundingError();
     },
 
     // Tries to fix rounding errors (mostly Safari) - just a try, no guarantee.
@@ -61,10 +59,8 @@
         excessPixels = parseFloat(parentWidth) % this.options.slidesToShow;      
 
       if (excessPixels > 0) {
-        this._roundingError = true;
         this.element.style.width = parseFloat(parentWidth) - excessPixels + 'px';
       } else {
-        this._roundingError = false;
         this.element.style.width =  '';
       }
     },
