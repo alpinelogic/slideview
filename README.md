@@ -3,14 +3,14 @@ Slideview.js
 
 Slideview is a tiny, pure JS lib for responsive sliders (_<http://istocode.github.io/slideview/>_).
 
-### Why another slider?
+#### Why another slider?
 Because every content slider I have tried exeeds 1,000 lines of code. If you only need one feature instead of 99 and you want to support only modern Browsers (IE10+), then Slideview may work for you. IE9 can be supported simply by using any polyfill for the [classList](https://github.com/remy/polyfills/blob/master/classList.js) API.
 
 If non-modern browsers are a concern, then try the Slideview jQuery plugin (_coming soon_).
 
 
 
-### Features
+## Features
 * Lightweight lib (_a little over 350 lines of code for the VanillaJS version_).
 * Sliding effect happens with a simple CSS transition.
 * In contrast to many other sliders, Slideview.js uses percentages for all of its slides. You initialize Slideview once and the slides get resized by the Browser automatically.
@@ -20,16 +20,16 @@ If non-modern browsers are a concern, then try the Slideview jQuery plugin (_com
 
 
 
-### Version
+## Version
 0.7.5
 
 
-### Dependencies
+## Dependencies
 None!
 
 
 
-### Compatibility
+## Compatibility
 Tested on the following modern Browsers & platforms:
 
 <table>
@@ -77,5 +77,5 @@ Tested on the following modern Browsers & platforms:
 
 
 
-### Docs & Demo
+## Demo
 <http://istocode.github.io/slideview/>
