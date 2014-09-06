@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Slideview.js - Full view</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A full view example that can be used for slideshows.">
+  <link href="../../src/css/slideview.css?v=0.7.5" rel="stylesheet">
+
+  <link href="../css/demo.css?v=0.7.6" rel="stylesheet">
+  <link href="../css/examples.css?v=0.7.6" rel="stylesheet">
+  <link href="../css/prism.css" rel="stylesheet">
+  <style>
+    a { color: #428BCA; }
+    .container { padding: 1.5em 3em; }
+  </style>
+</head>
+<body>
+  <header class="slideview" id="full-view">
+    <div class="inner">
+      <div class="offscreen">
+        <div class="slide" style="background-image: url(http://unsplash.it/1480/582?image=6);"></div>
+        <div class="slide" style="background-image: url(http://unsplash.it/1480/582?image=210);"></div>
+        <div class="slide" style="background-image: url(http://unsplash.it/1480/582?image=204);"></div>
+        <div class="slide" style="background-image: url(http://unsplash.it/1480/582?image=125);"></div>
+        <div class="slide" style="background-image: url(http://unsplash.it/1480/582?image=142);"></div>
+        <div class="slide" style="background-image: url(http://unsplash.it/1480/582?image=168);"></div>
+        <div class="slide" style="background-image: url(http://unsplash.it/1480/582?image=240);"></div>
+        <div class="slide" style="background-image: url(http://unsplash.it/1480/582?image=238);"></div>
+        <div class="slide" style="background-image: url(http://unsplash.it/1480/582?image=242);"></div>
+        <div class="slide" style="background-image: url(http://unsplash.it/1480/582?image=14);"></div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="#prev" class="prev btn btn-purple">&lt;</a>
+      <a href="#next" class="next btn btn-purple">&gt;</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <p><a href="/slideview">&lt; Back</a></p>
+    <h1>Full view code</h1>
+
+  <pre>
+  <code class="language-javascript">
+  /**
+   * JS: Create instance
+   * ---------------------------------------- */
+  var slider = new Slideview('#full-view', {
+    slidesToShow: 1,
+    endSlideBack: true // `true` indicates that it slides back to the 1st slide when reaching the end
+  });
+  </code></pre>
+
+  <br>
+
+  <pre>
+  <code class="language-css">
+    /**
+     * Full view styles
+     * ---------------------------------------- */
+    .slideview { height: 100%; }
+
+    .slide {
+      /* Hide all slides so we can fade in the active 
+       * slide and implement a fadeIn/fadeOut effect. */
+      opacity: 0.2;
+
+      min-height: 480px;
+
+      background-position: center center;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      background-size: cover;
+
+      -webkit-transition: opacity .9s;
+      -moz-transition: opacity .9s;
+      -ms-transition: opacity .9s;
+      -o-transition: opacity .9s;
+      transition: opacity .9s;
+    }
+    .slide.active {
+      /* Fade it in. */
+      opacity: 1;
+
+      /* The active one should have a higher z-index 
+       * than the other in case they overlap. */
+      z-index: 10;
+
+      -webkit-transition: opacity .6s;
+      -moz-transition: opacity .6s;
+      -ms-transition: opacity .6s;
+      -o-transition: opacity .6s;
+      transition: opacity .6s;
+    }
+    .next-slide { z-index: 5; }
+
+    /**
+     * Remove the fadeIn/fadeOut while we're sliding all 
+     * the way to the first or last slide.
+     */
+    .slide-to-first .slide, .slide-to-last .slide { opacity: 1; }
+
+    /**
+     * Make sure images fill their container.
+     */
+    .slide img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /**
+     * Specify a slide transition other than default.
+     */
+    .offscreen {
+      -webkit-transition: -webkit-transform 0.35s ease-in-out;
+      -moz-transition: -moz-transform 0.35s ease-in-out;
+      -ms-transition: -ms-transform 0.35s ease-in-out;
+      -o-transition: -o-transform 0.35s ease-in-out;
+      transition: transform 0.35s ease-in-out;
+    }
+
+    /**
+     * Style the nav.
+     */
+    .nav { position: relative; }
+    .nav a {
+      position: absolute;
+      bottom: 40px;
+      display: inline-block;
+    }
+    .nav .prev { left: 0; left: 30px; }
+    .nav .next { right: 0; right: 30px; }
+  </code></pre>
+
+  </div>
+
+  <br><br>
+  <br>
+
+
+  <script src="../../slideview-0.7.5.js"></script>
+  <script>
+      window.setTimeout(function() {
+        document.querySelector('.slideview').className += ' fadeIn';
+      }, 300);
+    
+      // Create a Slideview instance
+      var slider = new Slideview('#full-view', {
+        slidesToShow: 1,
+        endSlideBack: true
+      });
+  </script>
+  <script src="../js/prism.js"></script>
+</body>
+</html>
