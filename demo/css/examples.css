@@ -1,0 +1,122 @@
+/**
+ * Dark boxes example.
+ * ---------------------------------------- */
+#dark-boxes .slide {
+  margin: 10px 5px;
+  text-align: center;
+  color: #E6E6E6;
+  background: #363A41;
+}
+#dark-boxes .slide.active { background: #594A69; }
+#dark-boxes .slide h3 {
+  margin: 0;
+  padding: 2.25em 1em;
+}
+#dark-boxes .nav {
+  margin: .5em;
+  text-align: center;
+}
+#dark-boxes .nav a {
+  display: inline-block;
+  margin: 0 .125em;
+  padding: .325em 1em;
+  font-size: 18px;
+  color: #FCFCFC;
+  text-decoration: none;
+  background: #667292;
+  opacity: .88;
+}
+#dark-boxes .nav a:hover { opacity: 1; }
+
+
+/**
+ * Full view styles
+ * ---------------------------------------- */
+#full-view {
+  height: 100%;
+
+  /* Hide it on init so we can fade it in. */
+  opacity: 0;
+
+  -webkit-transition: opacity .5s;
+  -moz-transition: opacity .5s;
+  -ms-transition: opacity .5s;
+  -o-transition: opacity .5s;
+  transition: opacity .5s;
+}
+#full-view.fadeIn { opacity: 1; }
+
+#full-view .slide {
+  /* Hide all slides so we can fade in the active 
+   * slide and implement a fadeIn/fadeOut effect. */
+  opacity: 0.2;
+
+  min-height: 480px;
+
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+
+  -webkit-transition: opacity .9s;
+  -moz-transition: opacity .9s;
+  -ms-transition: opacity .9s;
+  -o-transition: opacity .9s;
+  transition: opacity .9s;
+}
+#full-view .slide.active {
+  /* Fade it in. */
+  opacity: 1;
+
+  /* The active one should have a higher z-index 
+   * than the other in case they overlap. */
+  z-index: 10;
+
+  -webkit-transition: opacity .6s;
+  -moz-transition: opacity .6s;
+  -ms-transition: opacity .6s;
+  -o-transition: opacity .6s;
+  transition: opacity .6s;
+}
+#full-view .next-slide { z-index: 5; }
+
+/**
+ * Remove the fadeIn/fadeOut while we're sliding all 
+ * the way to the first or last slide.
+ */
+#full-view .slide-to-first .slide, 
+#full-view.slide-to-last .slide {
+  opacity: 1;
+}
+
+/**
+ * Make sure images fill their container.
+ */
+#full-view img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/**
+ * Specify a slide transition other than default.
+ */
+#full-view .offscreen {
+  -webkit-transition: -webkit-transform 0.35s ease-in-out;
+  -moz-transition: -moz-transform 0.35s ease-in-out;
+  -ms-transition: -ms-transform 0.35s ease-in-out;
+  -o-transition: -o-transform 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out;
+}
+
+/**
+ * Style the nav.
+ */
+#full-view .nav { position: relative; }
+#full-view .nav a {
+  position: absolute;
+  bottom: 40px;
+  display: inline-block;
+}
+#full-view .nav .prev { left: 0; left: 30px; }
+#full-view .nav .next { right: 0; right: 30px; }

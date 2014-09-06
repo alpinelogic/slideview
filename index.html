@@ -5,12 +5,14 @@
   <title>Slideview.js</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="slideview.js - a tiny vanilla JS lib for responsive sliders.">
-  <link href="css/slideview.css?v=0.7.5" rel="stylesheet">
-  <link href="css/demo.css?v=0.7.6" rel="stylesheet">
-  <link href="css/prism.css" rel="stylesheet">
+  <link href="src/css/slideview.css?v=0.7.5" rel="stylesheet">
+
+  <link href="demo/css/demo.css?v=0.7.5" rel="stylesheet">
+  <link href="demo/css/examples.css?v=0.7.5" rel="stylesheet">
+  <link href="demo/css/prism.css" rel="stylesheet">
 </head>
 <body>
-<header>
+<header class="landing-header">
   <div class="intro">
     <h1><span class="lib-name">Slideview<span class="text-normal">.js</span></span> <small class="text-thin">(v0.7.5)</small></h1>
     <p class="lib-desc">A tiny vanilla JS lib for responsive sliders. <br> No crazy features!</p>
@@ -43,7 +45,7 @@
   <br>
 
   <div class="slideview-section">
-    <h2>Example <small style="font-size:.5em;vertical-align:middle">(<a href="examples/full.html">full view example</a>)</small></h2><hr>
+    <h2>Example <small style="font-size:.5em;vertical-align:middle">(<a href="demo/examples/full.html">full view example</a>)</small></h2><hr>
     <div class="slideview boxes" id="dark-boxes">
       <div class="inner">
         <div class="offscreen">
@@ -191,8 +193,8 @@
   <p>You can get the source from Github: <a href="https://github.com/istocode/slideview">https://github.com/istocode/slideview</a></p>
 </footer>
 
-<script src="js/slideview.js?v=0.7.5"></script>
+<script src="slideview-0.7.5.js"></script>
 <script> var slider = new Slideview('#dark-boxes', { slidesToShow: 5 }); </script>
-<script src="js/prism.js"></script>
+<script src="demo/js/prism.js"></script>
 </body>
 </html>
