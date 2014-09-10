@@ -37,7 +37,7 @@ a {
 .landing-header {
   margin-bottom: 1em;
   display: block;
-  background: rgba(0, 0, 0, 0.9) url('http://unsplash.it/g/1440/420?image=20') center center no-repeat;
+  background: rgba(0, 0, 0, 0.9) url('../../images/448.jpg') center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;
