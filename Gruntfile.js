@@ -132,6 +132,18 @@ module.exports = function(grunt) {
         tasks: ['default'],
         options: { spawn: false }
       }
+    },
+
+    /**
+     * Static Server
+     */
+    connect: {
+      dev: {
+        options: {
+          port: 9000,
+          keepalive: true
+        }
+      }
     }
   });
 
@@ -144,7 +156,8 @@ module.exports = function(grunt) {
     'grunt-string-replace',
     'grunt-contrib-uglify', 
     'grunt-contrib-jshint',
-    'grunt-contrib-watch'
+    'grunt-contrib-watch',
+    'grunt-contrib-connect'
   ].forEach(grunt.loadNpmTasks);
 
   // The default task.
