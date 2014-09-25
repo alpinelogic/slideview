@@ -1,7 +1,7 @@
 {
   "name": "slideview",
   "title": "Slideview.js",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "description": "A tiny VanillaJS lib for responsive sliders. No crazy features!",
   "author": "Billy Onjea",
   "license":  {

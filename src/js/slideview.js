@@ -11,12 +11,12 @@
     this.nextBtn = find(SELECTORS.next, this.element);
     this.prevBtn = find(SELECTORS.prev, this.element);
 
+    // Merge defaults with user options
+    this.options = merge(Slideview.defaults, userOptions);
+
     // Meta
     this._index = this._currentOffset = 0;
     this._total = (this.slides && this.slides.length) || 0;
-
-    // Merge defaults with user options
-    this.options = merge(Slideview.defaults, userOptions);
 
     // Math & Dimension related vars
     this._hundredPercent = 100;
@@ -32,7 +32,7 @@
 
     _init: function() {
       this._setWidths();
-      this._attachResize();
+      _isSafari && this._attachResize();
       this._attachClick();
       this._attachTransitionEnd();
     },

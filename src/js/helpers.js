@@ -2,6 +2,11 @@ var
   _window = window,
   _document = _window.document,
 
+  // When Safari stops producing rounding errors and starts handling 
+  // sub-pixels like Chrome & Firefox, this line can be removed.
+  // Source: https://github.com/conditionizr/conditionizr/blob/master/detects/safari.js
+  _isSafari = /Constructor/.test(_window.HTMLElement),
+
   find = function(selector, context) {
     return (context || _document).querySelector(selector);
   },

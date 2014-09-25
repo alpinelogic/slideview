@@ -12,9 +12,10 @@
   Slideview.defaults = {
     slidesToShow: 4,
 
-    // when `true` it slides back to the 1st slide when reaching the end
+    // When `true` it slides back to the 1st slide when reaching the end
     endSlideBack: false,
 
-    // only for Browsers that may have rounding errors
+    // Only for Safari because of rounding errors
+    // Basically it stops rounding errors from compounding when moving through the slides
     resizeDelay: 150
   };
