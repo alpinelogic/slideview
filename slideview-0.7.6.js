@@ -6,7 +6,7 @@
  *  ____) | | | (_| |  __/\ V /| |  __/\ V  V /
  * |_____/|_|_|\__,_|\___| \_/ |_|\___| \_/\_/
  * ---------------------------------------------
- * Slideview (v0.7.5)
+ * Slideview (v0.7.6)
  * A tiny VanillaJS lib for responsive sliders.
  * No crazy features!
  */
@@ -16,6 +16,11 @@
 var 
   _window = window,
   _document = _window.document,
+
+  // When Safari stops producing rounding errors and starts handling 
+  // sub-pixels like Chrome & Firefox, this line can be removed.
+  // Source: https://github.com/conditionizr/conditionizr/blob/master/detects/safari.js
+  _isSafari = /Constructor/.test(_window.HTMLElement),
 
   find = function(selector, context) {
     return (context || _document).querySelector(selector);
@@ -180,10 +185,11 @@ var
   Slideview.defaults = {
     slidesToShow: 4,
 
-    // when `true` it slides back to the 1st slide when reaching the end
+    // When `true` it slides back to the 1st slide when reaching the end
     endSlideBack: false,
 
-    // only for Browsers that may have rounding errors
+    // Only for Safari because of rounding errors
+    // Basically it stops rounding errors from compounding when moving through the slides
     resizeDelay: 150
   };
 
@@ -200,12 +206,12 @@ var
     this.nextBtn = find(SELECTORS.next, this.element);
     this.prevBtn = find(SELECTORS.prev, this.element);
 
+    // Merge defaults with user options
+    this.options = merge(Slideview.defaults, userOptions);
+
     // Meta
     this._index = this._currentOffset = 0;
     this._total = (this.slides && this.slides.length) || 0;
-
-    // Merge defaults with user options
-    this.options = merge(Slideview.defaults, userOptions);
 
     // Math & Dimension related vars
     this._hundredPercent = 100;
@@ -221,7 +227,7 @@ var
 
     _init: function() {
       this._setWidths();
-      this._attachResize();
+      _isSafari && this._attachResize();
       this._attachClick();
       this._attachTransitionEnd();
     },
